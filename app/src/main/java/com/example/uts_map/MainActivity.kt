@@ -57,29 +57,24 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
-        // Akses FloatingActionButton
         val fabAddNew: FloatingActionButton = findViewById(R.id.fab_addnew)
 
-        // Mengatur listener untuk navigasi
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if (destination.id != R.id.navigation_addnew) {
-                fabAddNew.visibility = View.VISIBLE // Tampilkan kembali tombol "Add"
+                fabAddNew.visibility = View.VISIBLE
             } else {
-                fabAddNew.visibility = View.GONE // Sembunyikan saat di NewNotesFragment
+                fabAddNew.visibility = View.GONE
             }
         }
 
-        // Listener untuk klik tombol "Add New"
         fabAddNew.setOnClickListener {
             val navOptions = NavOptions.Builder()
                 .setLaunchSingleTop(true)
-                .setPopUpTo(R.id.nav_host_fragment, true) // Bersihkan tumpukan sampai root
+                .setPopUpTo(R.id.nav_host_fragment, true)
                 .build()
 
-            // Navigasi ke NewNotesFragment dengan membersihkan tumpukan
             navController.navigate(R.id.navigation_addnew, null, navOptions)
 
-            // Sembunyikan tombol "Add New" setelah ditekan
             fabAddNew.visibility = View.GONE
         }
 
