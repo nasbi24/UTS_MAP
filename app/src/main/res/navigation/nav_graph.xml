@@ -25,4 +25,20 @@
         android:name="com.example.uts_map.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.uts_map.EditProfileFragment"
+        android:label="Edit Profile"
+        tools:layout="@layout/fragment_edit_profile" />
+    <action
+        android:id="@+id/action_profileFragment_to_editProfileFragment"
+        app:destination="@id/editProfileFragment" />
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.example.uts_map.ChangePasswordFragment"
+        android:label="Change Password"
+        tools:layout="@layout/fragment_change_password" />
+    <action
+        android:id="@+id/action_profileFragment_to_changePasswordFragment"
+        app:destination="@id/changePasswordFragment" />
 </navigation>
