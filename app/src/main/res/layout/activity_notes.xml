@@ -1,10 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".NotesActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Tombol Back -->
+    <TextView
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="← Back"
+        android:textColor="@color/purple"
+        android:textSize="16sp"
+        android:padding="8dp" />
+
+    <!-- Input Judul Notes -->
+    <EditText
+        android:id="@+id/et_note_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Note Title"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:padding="8dp"
+        android:layout_marginTop="16dp" />
+
+    <!-- Input Isi Notes -->
+    <EditText
+        android:id="@+id/et_note_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="Enter Note Content"
+        android:textSize="16sp"
+        android:padding="8dp"
+        android:gravity="top"
+        android:layout_marginTop="8dp" />
+
+</LinearLayout>
