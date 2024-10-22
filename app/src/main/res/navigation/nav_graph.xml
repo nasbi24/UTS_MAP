@@ -16,6 +16,11 @@
         android:label="Calendar"
         tools:layout="@layout/fragment_calendar" />
     <fragment
+        android:id="@+id/navigation_addnew"
+        android:name="com.example.uts_map.NewNotes"
+        android:label="New"
+        tools:layout="@layout/fragment_new_notes" />
+    <fragment
         android:id="@+id/navigation_map"
         android:name="com.example.uts_map.MapFragment"
         android:label="Map"
