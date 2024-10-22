@@ -15,17 +15,17 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [CalendarFragment.newInstance] factory method to
+ * Use the [FinishedFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
 // CalendarFragment.kt
-class CalendarFragment : Fragment() {
+class FinishedFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_calendar, container, false)
+        val view = inflater.inflate(R.layout.fragment_finished, container, false)
         val gridLayout = view.findViewById<GridLayout>(R.id.gridLayout)
 
         // Add 7 fragments to the grid

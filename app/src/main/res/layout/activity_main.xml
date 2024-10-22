@@ -32,7 +32,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            app:menu="@menu/bottom_nav_menu" />
+            app:itemIconSize="30dp"
+            app:menu="@menu/bottom_nav_menu"
+            app:itemIconTint="@color/nav_item_color"
+            app:itemTextColor="@color/nav_item_color"/>
+
+
     </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView

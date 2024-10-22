@@ -6,18 +6,18 @@
         android:title="Home" />
     <item
         android:id="@+id/navigation_calendar"
-        android:icon="@drawable/icon_calendar"
-        android:title="Calendar" />
+        android:icon="@drawable/icon_finished"
+        android:title="Finished" />
     <item
         android:id="@+id/navigation_addnew"
-        android:icon="@drawable/icon_addnew"
+        android:icon="@drawable/icon_add_circle"
         android:title="New" />
     <item
         android:id="@+id/navigation_map"
-        android:icon="@drawable/icon_home"
-        android:title="Map" />
+        android:icon="@drawable/icon_search"
+        android:title="Search" />
     <item
         android:id="@+id/navigation_profile"
-        android:icon="@drawable/icon_profile"
-        android:title="Profile" />
+        android:icon="@drawable/icon_settings"
+        android:title="Setting" />
 </menu>
