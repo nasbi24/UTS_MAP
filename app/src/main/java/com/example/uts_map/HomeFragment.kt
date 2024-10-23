@@ -78,7 +78,7 @@ class HomeFragment : Fragment() {
         return when (category) {
             "Interesting Idea" -> view.findViewById(R.id.fragment_container_interesting_idea)
             "Goals" -> view.findViewById(R.id.fragment_container_goals)
-            "Routine Task" -> view.findViewById(R.id.fragment_container_routine_task)
+            "Routine Tasks" -> view.findViewById(R.id.fragment_container_routine_task)
             "Guidance" -> view.findViewById(R.id.fragment_container_guidance)
             "Buy Something" -> view.findViewById(R.id.fragment_container_buy_something)
             else -> null
