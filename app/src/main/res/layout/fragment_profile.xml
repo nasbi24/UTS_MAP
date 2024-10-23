@@ -1,4 +1,5 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,48 +7,182 @@
     android:padding="16dp"
     tools:context=".ProfileFragment">
 
+    <!-- Bagian Toolbar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            android:textColor="@color/purple"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Settings"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginStart="-29dp"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <!-- Gambar Profil -->
     <ImageView
         android:id="@+id/ivProfilePic"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
-        android:src="@drawable/ic_profileplaceholder" />
+        android:src="@drawable/ic_profileplaceholder"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/circle_background"
+        android:scaleType="centerCrop" />
 
+    <!-- Nama Pengguna -->
     <TextView
         android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_gravity="center"
         android:text="Name"
-        android:textSize="18sp" />
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp" />
 
+    <!-- Email Pengguna -->
     <TextView
         android:id="@+id/tvEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_gravity="center"
         android:text="Email"
-        android:textSize="18sp" />
+        android:textSize="16sp"
+        android:textColor="@color/gray"
+        android:layout_marginTop="4dp" />
 
-    <Button
+    <!-- Tombol Edit Profil -->
+    <TextView
         android:id="@+id/btnEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Edit Profile"
+        android:backgroundTint="@color/white"
         android:layout_marginTop="16dp"
-        android:text="Edit Info" />
+        android:elevation="4dp"
+        android:drawableStart="@drawable/ic_edit"
+        android:drawablePadding="12dp"/>
 
-    <Button
+    <!-- Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        android:layout_marginTop="24dp" />
+
+    <!-- Section Pengaturan -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="APP SETTINGS"
+        android:textStyle="bold"
+        android:textColor="@color/gray"
+        android:layout_marginTop="16dp" />
+
+    <!-- Pengaturan Akun -->
+    <LinearLayout
         android:id="@+id/btnChangePassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingVertical="12dp"
+        android:gravity="center_vertical"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?attr/selectableItemBackground">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_password" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Change Password"
+            android:paddingStart="8dp" />
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_arrow_right" />
+    </LinearLayout>
+
+    <!-- Pengaturan Ukuran Teks -->
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:paddingVertical="12dp"-->
+<!--        android:gravity="center_vertical">-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="24dp"-->
+<!--            android:layout_height="24dp"-->
+<!--            android:src="@drawable/ic_text_size" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="Text Size"-->
+<!--            android:paddingStart="8dp" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Medium" />-->
+<!--    </LinearLayout>-->
+
+<!--    &lt;!&ndash; Pengaturan Notifikasi &ndash;&gt;-->
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:paddingVertical="12dp"-->
+<!--        android:gravity="center_vertical">-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="24dp"-->
+<!--            android:layout_height="24dp"-->
+<!--            android:src="@drawable/ic_notifications" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="Notifications"-->
+<!--            android:paddingStart="8dp" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="All active" />-->
+<!--    </LinearLayout>-->
+
+    <!-- Tombol Logout -->
+    <TextView
+        android:id="@+id/tvLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Change Password" />
-
-    <Button
-        android:id="@+id/btnLogout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Logout" />
-
+        android:layout_gravity="center"
+        android:text="Log Out"
+        android:textColor="@color/red"
+        android:layout_marginTop="24dp"
+        android:textSize="16sp" />
 </LinearLayout>
