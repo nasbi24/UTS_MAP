@@ -38,12 +38,42 @@ class HomeFragment : Fragment() {
         // Tambahkan card ke container
         containerLayout.addView(cardView)
 
+<<<<<<< Updated upstream
         // Tambahkan listener klik pada card
         cardView.setOnClickListener {
             val intent = Intent(requireContext(), NotesActivity::class.java)
             intent.putExtra("NOTE_TITLE", noteTitle)
             intent.putExtra("NOTE_CONTENT", noteContent)
             startActivity(intent)
+=======
+                    val cardView = createPinnedNoteCard(title, content, category)
+                    if (cardView != null) {
+                        val containerLayout = getCategoryContainer(view, category)
+                        containerLayout?.addView(cardView)
+
+                        cardView.setOnClickListener {
+                            val bundle = Bundle().apply {
+                                putString("NOTE_TITLE", title)
+                                putString("NOTE_CONTENT", content)
+                                putString("NOTE_CATEGORY", category)
+                                putString("NOTE_DATE", date)
+                            }
+                            findNavController().navigate(R.id.action_homeFragment_to_noteDetailFragment, bundle)
+                        }
+                    }
+                }
+            }
+    }
+
+    private fun getCategoryContainer(view: View, category: String?): LinearLayout? {
+        return when (category) {
+            "Interesting Idea" -> view.findViewById(R.id.fragment_container_interesting_idea)
+            "Goals" -> view.findViewById(R.id.fragment_container_goals)
+            "Routine Tasks" -> view.findViewById(R.id.fragment_container_routine_task)
+            "Guidance" -> view.findViewById(R.id.fragment_container_guidance)
+            "Buy Something" -> view.findViewById(R.id.fragment_container_buy_something)
+            else -> null
+>>>>>>> Stashed changes
         }
 
         return view
@@ -53,6 +83,15 @@ class HomeFragment : Fragment() {
     private fun createPinnedNoteCard(title: String?, content: String?, category: String?): View {
         val cardView = layoutInflater.inflate(R.layout.item_note_card, null) as CardView
 
+        // Set margin untuk CardView
+        val layoutParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
+        layoutParams.setMargins(28, 8, 16, 8) // Margin (left, top, right, bottom) dalam dp
+        cardView.layoutParams = layoutParams
+
+        // Mengatur isi CardView
         val titleTextView = cardView.findViewById<TextView>(R.id.tv_card_title)
         val contentTextView = cardView.findViewById<TextView>(R.id.tv_card_content)
         val categoryTextView = cardView.findViewById<TextView>(R.id.tv_card_category)
