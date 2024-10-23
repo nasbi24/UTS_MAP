@@ -7,16 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [NewNotes.newInstance] factory method to
- * create an instance of this fragment.
- */
 class NewNotes : Fragment(R.layout.fragment_new_notes) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,10 +34,10 @@ class NewNotes : Fragment(R.layout.fragment_new_notes) {
         }
     }
 
-    // Fungsi untuk navigasi ke NotesActivity
+    // Function to navigate to NotesActivity
     private fun navigateToNotesActivity(category: String) {
         val intent = Intent(requireContext(), NotesActivity::class.java)
-        intent.putExtra("CATEGORY", category) // Kirim data kategori
+        intent.putExtra("CATEGORY", category) // Send category data
         startActivity(intent)
     }
 }
