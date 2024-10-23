@@ -18,12 +18,7 @@
         android:textStyle="bold"
         android:paddingTop="16dp" />
 
-    <TextView
-        android:id="@+id/tv_note_category"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:paddingTop="8dp" />
+
 
     <TextView
         android:id="@+id/tv_note_date"
