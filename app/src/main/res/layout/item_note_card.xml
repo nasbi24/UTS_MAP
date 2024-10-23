@@ -1,11 +1,8 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-<<<<<<< Updated upstream
+
     android:layout_width="match_parent"
-=======
-    android:layout_width="200dp"
->>>>>>> Stashed changes
     android:layout_height="wrap_content"
     android:paddingHorizontal="12dp"
     android:layout_margin="100dp"
