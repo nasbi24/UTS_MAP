@@ -1,0 +1,52 @@
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="36dp"
+    app:cardElevation="4dp"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <!-- Judul Card -->
+        <TextView
+            android:id="@+id/tv_card_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pinned Notes"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Isi Catatan -->
+        <TextView
+            android:id="@+id/tv_card_content"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginBottom="8dp"
+            android:background="@android:color/transparent"
+            android:textSize="14sp"
+            android:textColor="@color/gray" />
+
+        <!-- Label Kategori -->
+        <TextView
+            android:id="@+id/tv_card_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Interesting Idea"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:background="@color/purple"
+            android:padding="4dp"
+            android:layout_gravity="bottom" />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

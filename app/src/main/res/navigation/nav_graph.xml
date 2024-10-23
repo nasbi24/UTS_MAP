@@ -12,17 +12,22 @@
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/navigation_calendar"
-        android:name="com.example.uts_map.CalendarFragment"
+        android:name="com.example.uts_map.FinishedFragment"
         android:label="Calendar"
-        tools:layout="@layout/fragment_calendar" />
+        tools:layout="@layout/fragment_finished" />
+    <fragment
+        android:id="@+id/navigation_addnew"
+        android:name="com.example.uts_map.NewNotes"
+        android:label="New"
+        tools:layout="@layout/fragment_new_notes" />
     <fragment
         android:id="@+id/navigation_map"
-        android:name="com.example.uts_map.MapFragment"
+        android:name="com.example.uts_map.SearchFragment"
         android:label="Map"
-        tools:layout="@layout/fragment_map" />
+        tools:layout="@layout/fragment_search" />
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.uts_map.ProfileFragment"
+        android:name="com.example.uts_map.SettingFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
