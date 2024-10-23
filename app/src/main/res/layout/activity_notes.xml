@@ -8,17 +8,37 @@
     android:padding="16dp"
     tools:context=".NotesActivity">
 
-    <!-- Tombol Back -->
-    <TextView
-        android:id="@+id/back"
-        android:layout_width="wrap_content"
+    <!-- Row for Back and Save buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="← Back"
-        android:textColor="@color/purple"
-        android:textSize="16sp"
-        android:padding="8dp" />
+        android:orientation="horizontal">
+
+        <!-- Back Button -->
+        <TextView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="← Back"
+            android:layout_weight="1"
+            android:textColor="@color/purple"
+            android:textSize="16sp"
+            android:padding="8dp" />
+
+        <!-- Save Button -->
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:textColor="@color/purple"
+            android:textSize="16sp"
+            android:padding="8dp"
+            android:background="?android:attr/selectableItemBackground" />
+    </LinearLayout>
 
     <!-- Input Judul Notes -->
+
     <EditText
         android:id="@+id/et_note_title"
         android:layout_width="match_parent"
