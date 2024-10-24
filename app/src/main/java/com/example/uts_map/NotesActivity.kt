@@ -147,6 +147,7 @@ class NotesActivity : AppCompatActivity() {
     fun addImageToLayout(imagePath: String, description: String) {
         Log.d("NotesActivity", "Adding image to layout: $imagePath")
         val imageContainer = findViewById<LinearLayout>(R.id.image_container)
+
         val imageView = ImageView(this).apply {
             layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
@@ -165,7 +166,76 @@ class NotesActivity : AppCompatActivity() {
         val textView = TextView(this).apply {
             text = description
         }
-        imageContainer.addView(imageView)
-        imageContainer.addView(textView)
+
+        val deleteButton = Button(this).apply {
+            text = "Delete"
+            setOnClickListener {
+                deleteImage(imagePath)
+            }
+        }
+
+        val imageLayout = LinearLayout(this).apply {
+            orientation = LinearLayout.VERTICAL
+            addView(imageView)
+            addView(textView)
+            addView(deleteButton)
+        }
+
+        imageContainer.addView(imageLayout)
+    }
+
+    private fun deleteImage(imagePath: String) {
+        // Delete from Firebase Storage
+        val storageRef = storage.getReferenceFromUrl(imagePath)
+        storageRef.delete().addOnSuccessListener {
+            // Delete from Firestore
+            firestore.collection("images")
+                .whereEqualTo("image_path", imagePath)
+                .get()
+                .addOnSuccessListener { documents ->
+                    for (document in documents) {
+                        firestore.collection("images").document(document.id).delete()
+                    }
+                    Toast.makeText(this, "Image deleted successfully", Toast.LENGTH_SHORT).show()
+                    // Refresh the images view
+                    loadImages()
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this, "Failed to delete image info", Toast.LENGTH_SHORT).show()
+                }
+        }.addOnFailureListener {
+            Toast.makeText(this, "Failed to delete image from storage", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun loadImages() {
+        val imageContainer = findViewById<LinearLayout>(R.id.image_container)
+        imageContainer.removeAllViews()
+
+        firestore.collection("images")
+            .whereEqualTo("note_id", noteId)
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    val imagePath = document.getString("image_path") ?: continue
+                    val description = document.getString("description") ?: ""
+                    addImageToLayout(imagePath, description)
+                }
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "Failed to load images", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun removeImageFromLayout(imagePath: String) {
+        val imageContainer = findViewById<LinearLayout>(R.id.image_container)
+        for (i in 0 until imageContainer.childCount) {
+            val imageLayout = imageContainer.getChildAt(i) as LinearLayout
+            val imageView = imageLayout.getChildAt(0) as ImageView
+            if (Glide.with(this).load(imagePath).equals(imageView.drawable)) {
+                imageContainer.removeViewAt(i)
+                break
+            }
+        }
     }
 }

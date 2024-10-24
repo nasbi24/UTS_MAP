@@ -7,10 +7,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -43,6 +47,9 @@ class NoteDetailFragment : Fragment() {
         view.findViewById<TextView>(R.id.tv_note_date).text = date
         view.findViewById<TextView>(R.id.tv_note_content).text = content
 
+        val imagesLayout = view.findViewById<LinearLayout>(R.id.ll_images)
+        loadNoteImages(noteId, imagesLayout)
+
         val pinButton = view.findViewById<ImageButton>(R.id.btn_pin)
         val deleteButton = view.findViewById<ImageButton>(R.id.btn_delete)
         val editButton = view.findViewById<ImageButton>(R.id.btn_edit)
@@ -66,6 +73,11 @@ class NoteDetailFragment : Fragment() {
                 putExtra("NOTE_ID", noteId)
             }
             startActivity(intent)
+        }
+
+        val backButton = view.findViewById<Button>(R.id.btn_back)
+        backButton.setOnClickListener() {
+            parentFragmentManager.popBackStack()
         }
     }
 
@@ -173,6 +185,55 @@ class NoteDetailFragment : Fragment() {
             }
             .addOnFailureListener { e ->
                 Toast.makeText(requireContext(), "Failed to delete note", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun loadNoteImages(noteId: String?, imagesLayout: LinearLayout) {
+        val db = FirebaseFirestore.getInstance()
+        db.collection("images").whereEqualTo("note_id", noteId)
+            .get()
+            .addOnSuccessListener { querySnapshot ->
+                if (querySnapshot.isEmpty) {
+                    Log.d("NoteDetailFragment", "No images found for noteId: $noteId")
+                } else {
+                    for (document in querySnapshot.documents) {
+                        val imagePath = document.getString("image_path")
+                        val imageDescription = document.getString("description") ?: "No description"
+                        if (imagePath != null) {
+                            Log.d("NoteDetailFragment", "Loading image: $imagePath")
+                            val imageView = ImageView(requireContext()).apply {
+                                layoutParams = LinearLayout.LayoutParams(
+                                    LinearLayout.LayoutParams.MATCH_PARENT,
+                                    LinearLayout.LayoutParams.WRAP_CONTENT
+                                ).apply {
+                                    width = resources.displayMetrics.widthPixels / 2
+                                    setMargins(0, 8, 0, 8)
+                                }
+                                adjustViewBounds = true
+                                scaleType = ImageView.ScaleType.FIT_CENTER
+                            }
+                            Glide.with(this).load(imagePath).into(imageView)
+                            imagesLayout.addView(imageView)
+
+                            val descriptionView = TextView(requireContext()).apply {
+                                layoutParams = LinearLayout.LayoutParams(
+                                    LinearLayout.LayoutParams.MATCH_PARENT,
+                                    LinearLayout.LayoutParams.WRAP_CONTENT
+                                ).apply {
+                                    setMargins(0, 4, 0, 8)
+                                }
+                                text = imageDescription
+                            }
+                            imagesLayout.addView(descriptionView)
+                        } else {
+                            Log.d("NoteDetailFragment", "Image path is null for document: ${document.id}")
+                        }
+                    }
+                }
+            }
+            .addOnFailureListener { e ->
+                Log.e("NoteDetailFragment", "Failed to load images", e)
+                Toast.makeText(requireContext(), "Failed to load images", Toast.LENGTH_SHORT).show()
             }
     }
 }

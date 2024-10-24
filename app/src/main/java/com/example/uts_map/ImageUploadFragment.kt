@@ -34,9 +34,14 @@ class ImageUploadFragment : Fragment() {
         progressBar = view.findViewById(R.id.progress_bar)
         contentLayout = view.findViewById(R.id.content_layout)
         val uploadButton = view.findViewById<Button>(R.id.btn_upload_image)
+        val cancelButton = view.findViewById<Button>(R.id.btn_cancel)
 
         uploadButton.setOnClickListener {
             uploadImage()
+        }
+
+        cancelButton.setOnClickListener {
+            parentFragmentManager.popBackStack()
         }
 
         imageView.setOnClickListener {
