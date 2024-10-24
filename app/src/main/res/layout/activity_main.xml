@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:background="@color/purple"
             app:titleTextColor="@color/white"
+            app:navigationIconTint="@color/white"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
         <fragment
@@ -36,7 +37,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="7dp"
             android:background="@color/nav"
             app:itemIconTint="@color/nav_item_color"
             app:itemTextColor="@color/nav_item_color"

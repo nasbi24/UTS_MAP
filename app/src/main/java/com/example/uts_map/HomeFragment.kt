@@ -26,12 +26,7 @@ class HomeFragment : Fragment() {
     private lateinit var firestore: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
-    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -70,7 +65,7 @@ class HomeFragment : Fragment() {
         val bundle = Bundle().apply {
             putString("type", type)
         }
-        findNavController().navigate(R.id.action_homeFragment_to_fragmentViewAll, bundle)
+        findNavController().navigate(R.id.action_homeFragment_to_viewAllFragment, bundle)
     }
 
 
@@ -86,6 +81,8 @@ class HomeFragment : Fragment() {
 
         // Fetch and display notes
         fetchAndDisplayNotes(view)
+
+
     }
 
     private fun fetchAndDisplayNotes(view: View) {
@@ -277,7 +274,7 @@ class HomeFragment : Fragment() {
             LinearLayout.LayoutParams.WRAP_CONTENT,
             LinearLayout.LayoutParams.WRAP_CONTENT
         )
-        layoutParams.setMargins(16, 8, 16, 8) // Margin (left, top, right, bottom) dalam dp
+        layoutParams.setMargins(16, 8, 16, 8)
         cardView.layoutParams = layoutParams
 
         // Mengatur isi CardView

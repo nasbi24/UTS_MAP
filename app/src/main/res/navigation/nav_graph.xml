@@ -54,4 +54,11 @@
         android:id="@+id/noteDetailFragment"
         android:name="com.example.uts_map.NoteDetailFragment"
         android:label="Note Detail" />
+    <action
+        android:id="@+id/action_homeFragment_to_viewAllFragment"
+        app:destination="@id/viewAllFragment" />
+    <fragment
+        android:id="@+id/viewAllFragment"
+        android:name="com.example.uts_map.ViewAllFragment"
+        android:label="ViewAllFragment" />
 </navigation>

@@ -74,11 +74,7 @@ class NoteDetailFragment : Fragment() {
             }
             startActivity(intent)
         }
-
-        val backButton = view.findViewById<Button>(R.id.btn_back)
-        backButton.setOnClickListener() {
-            parentFragmentManager.popBackStack()
-        }
+        
     }
 
     private fun checkIfPinned(noteId: String?, pinButton: ImageButton) {
