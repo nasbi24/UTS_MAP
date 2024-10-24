@@ -1,16 +1,19 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".EditNoteActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/button_row"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/back"
@@ -33,30 +36,82 @@
             android:background="?android:attr/selectableItemBackground" />
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/et_note_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter Note Title"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:padding="8dp"
-        android:layout_marginTop="16dp" />
-
-    <Spinner
-        android:id="@+id/spinner_note_category"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp" />
-
-    <EditText
-        android:id="@+id/et_note_content"
-        android:layout_width="match_parent"
+    <ScrollView
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:hint="Enter Note Content"
-        android:textSize="16sp"
-        android:padding="8dp"
-        android:gravity="top"
-        android:layout_marginTop="8dp" />
-</LinearLayout>
+        app:layout_constraintTop_toBottomOf="@id/button_row"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <EditText
+                android:id="@+id/et_note_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Note Title"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:layout_marginTop="16dp" />
+
+            <Spinner
+                android:id="@+id/spinner_note_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp" />
+
+            <EditText
+                android:id="@+id/et_note_content"
+                android:layout_width="match_parent"
+                android:minHeight="300dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:hint="Enter Note Content"
+                android:textSize="16sp"
+                android:padding="8dp"
+                android:gravity="top"
+                android:layout_marginTop="8dp" />
+
+            <!-- Add Images Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Images"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <Button
+                android:id="@+id/btn_add_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Image"
+                android:layout_marginBottom="8dp" />
+
+            <LinearLayout
+                android:id="@+id/image_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- Fragment Container -->
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/button_row"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,7 +13,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import java.util.*
 
-class ImageUploadFragment : Fragment() {
+class ImageEditUploadFragment : Fragment() {
     private lateinit var storage: FirebaseStorage
     private lateinit var imageView: ImageView
     private lateinit var descriptionEditText: EditText
@@ -101,7 +101,7 @@ class ImageUploadFragment : Fragment() {
                 hideProgressBar()
                 enableInputs()
                 Toast.makeText(context, "Image uploaded successfully", Toast.LENGTH_SHORT).show()
-                (activity as NotesActivity).addImageToLayout(imagePath, description)
+                (activity as EditNoteActivity).addImageToLayout(imagePath, description)
                 parentFragmentManager.popBackStack()
             }
             .addOnFailureListener {
