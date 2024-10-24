@@ -7,10 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -20,6 +17,8 @@ class ImageUploadFragment : Fragment() {
     private lateinit var storage: FirebaseStorage
     private lateinit var imageView: ImageView
     private lateinit var descriptionEditText: EditText
+    private lateinit var progressBar: ProgressBar
+    private lateinit var contentLayout: LinearLayout
     private var imageUri: Uri? = null
     private lateinit var noteId: String
 
@@ -32,6 +31,8 @@ class ImageUploadFragment : Fragment() {
 
         imageView = view.findViewById(R.id.image_preview)
         descriptionEditText = view.findViewById(R.id.et_image_description)
+        progressBar = view.findViewById(R.id.progress_bar)
+        contentLayout = view.findViewById(R.id.content_layout)
         val uploadButton = view.findViewById<Button>(R.id.btn_upload_image)
 
         uploadButton.setOnClickListener {
@@ -66,6 +67,8 @@ class ImageUploadFragment : Fragment() {
         val description = descriptionEditText.text.toString()
         val storageRef = storage.reference.child("images/${UUID.randomUUID()}")
 
+        showProgressBar()
+
         storageRef.putFile(uri)
             .addOnSuccessListener {
                 storageRef.downloadUrl.addOnSuccessListener { downloadUri ->
@@ -73,6 +76,7 @@ class ImageUploadFragment : Fragment() {
                 }
             }
             .addOnFailureListener {
+                hideProgressBar()
                 Toast.makeText(context, "Failed to upload image", Toast.LENGTH_SHORT).show()
             }
     }
@@ -87,13 +91,27 @@ class ImageUploadFragment : Fragment() {
         FirebaseFirestore.getInstance().collection("images")
             .add(image)
             .addOnSuccessListener {
+                hideProgressBar()
                 Toast.makeText(context, "Image uploaded successfully", Toast.LENGTH_SHORT).show()
                 (activity as NotesActivity).addImageToLayout(imagePath, description)
                 parentFragmentManager.popBackStack()
             }
             .addOnFailureListener {
+                hideProgressBar()
                 Toast.makeText(context, "Failed to save image info", Toast.LENGTH_SHORT).show()
             }
+    }
+
+    private fun showProgressBar() {
+        progressBar.visibility = View.VISIBLE
+        contentLayout.isEnabled = false
+        contentLayout.alpha = 0.5f
+    }
+
+    private fun hideProgressBar() {
+        progressBar.visibility = View.GONE
+        contentLayout.isEnabled = true
+        contentLayout.alpha = 1.0f
     }
 
     companion object {

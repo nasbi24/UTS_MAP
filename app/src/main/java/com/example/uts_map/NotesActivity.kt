@@ -153,7 +153,7 @@ class NotesActivity : AppCompatActivity() {
                 400 // Set a fixed height for the image
             ).apply {
                 weight = 1f
-                width = 0
+                width = 400
             }
             adjustViewBounds = true
         }
