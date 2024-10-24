@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -30,9 +31,9 @@ class ProfileFragment : Fragment() {
         val ivProfilePic = view.findViewById<ImageView>(R.id.ivProfilePic)
         val tvName = view.findViewById<TextView>(R.id.tvName)
         val tvEmail = view.findViewById<TextView>(R.id.tvEmail)
-        val btnEdit = view.findViewById<Button>(R.id.btnEdit)
-        val btnLogout = view.findViewById<Button>(R.id.btnLogout)
-        val btnChangePassword = view.findViewById<Button>(R.id.btnChangePassword)
+        val btnEdit = view.findViewById<TextView>(R.id.btnEdit)
+        val btnLogout = view.findViewById<TextView>(R.id.tvLogout)
+        val btnChangePassword = view.findViewById<LinearLayout>(R.id.btnChangePassword)
 
         val user = auth.currentUser
         if (user != null) {

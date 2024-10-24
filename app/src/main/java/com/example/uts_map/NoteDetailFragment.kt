@@ -26,7 +26,7 @@ class NoteDetailFragment : Fragment() {
         val date = arguments?.getString("NOTE_DATE")
 
         view.findViewById<TextView>(R.id.tv_note_title).text = title
-        view.findViewById<TextView>(R.id.tv_note_category).text = category
+        //view.findViewById<TextView>(R.id.tv_note_category).text = category
         view.findViewById<TextView>(R.id.tv_note_date).text = date
         view.findViewById<TextView>(R.id.tv_note_content).text = content
 

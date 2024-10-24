@@ -91,6 +91,15 @@ class HomeFragment : Fragment() {
         val inflater = LayoutInflater.from(requireContext())
         val cardView = inflater.inflate(R.layout.item_note_card, null) as CardView
 
+        // Set margin untuk CardView
+        val layoutParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
+        layoutParams.setMargins(16, 8, 16, 8) // Margin (left, top, right, bottom) dalam dp
+        cardView.layoutParams = layoutParams
+
+        // Mengatur isi CardView
         val titleTextView = cardView.findViewById<TextView>(R.id.tv_card_title)
         val contentTextView = cardView.findViewById<TextView>(R.id.tv_card_content)
         val categoryTextView = cardView.findViewById<TextView>(R.id.tv_card_category)
