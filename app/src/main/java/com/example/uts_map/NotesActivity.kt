@@ -75,7 +75,7 @@ class NotesActivity : AppCompatActivity() {
         val note = hashMapOf(
             "user" to user,
             "date" to Timestamp.now(),
-            //"category" to category,
+            "category" to category,
             "title" to noteTitle,
             "content" to ""
         )
@@ -93,7 +93,7 @@ class NotesActivity : AppCompatActivity() {
         val date = Timestamp.now()
 
         val note = hashMapOf(
-            //"category" to category,
+            "category" to category,
             "content" to content,
             "date" to date,
             "title" to title,
