@@ -33,6 +33,47 @@ class HomeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_home, container, false)
+
+        view.findViewById<TextView>(R.id.view_all_pinned_notes).setOnClickListener {
+            navigateToViewAll("pinned_notes")
+        }
+
+        view.findViewById<TextView>(R.id.view_all_interesting_idea).setOnClickListener {
+            navigateToViewAll("interesting_idea")
+        }
+
+        view.findViewById<TextView>(R.id.view_all_goals).setOnClickListener {
+            navigateToViewAll("goals")
+        }
+
+        view.findViewById<TextView>(R.id.view_all_routine_task).setOnClickListener {
+            navigateToViewAll("routine_task")
+        }
+
+        view.findViewById<TextView>(R.id.view_all_guidance).setOnClickListener {
+            navigateToViewAll("guidance")
+        }
+
+        view.findViewById<TextView>(R.id.view_all_buy_something).setOnClickListener {
+            navigateToViewAll("buy_something")
+        }
+
+        return view
+    }
+
+    private fun navigateToViewAll(type: String) {
+        val bundle = Bundle().apply {
+            putString("type", type)
+        }
+        findNavController().navigate(R.id.action_homeFragment_to_fragmentViewAll, bundle)
+    }
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

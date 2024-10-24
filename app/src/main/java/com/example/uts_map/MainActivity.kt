@@ -80,20 +80,29 @@ class MainActivity : AppCompatActivity() {
             fabAddNew.visibility = View.GONE
         }
 
-        val drawerNavView: NavigationView = findViewById(R.id.nav_view)
-        appBarConfiguration = AppBarConfiguration(setOf(R.id.navigation_home), drawerLayout)
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        drawerNavView.setupWithNavController(navController)
+//        val drawerNavView: NavigationView = findViewById(R.id.nav_view)
+// Comment out or remove the following line to disable the drawerNavView
+// drawerNavView.setupWithNavController(navController)
 
-        val toggle = ActionBarDrawerToggle(
-            this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
+        appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.navigation_home,
+                R.id.navigation_calendar,
+                R.id.navigation_map,
+                R.id.navigation_profile
+            )
         )
-        drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
+        setupActionBarWithNavController(navController, appBarConfiguration)
+
+//        val toggle = ActionBarDrawerToggle(
+//            this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
+//        )
+//        drawerLayout.addDrawerListener(toggle)
+//        toggle.syncState()
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment)
-        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
-    }
+//    override fun onSupportNavigateUp(): Boolean {
+//        val navController = findNavController(R.id.nav_host_fragment)
+//        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+//    }
 }

@@ -22,6 +22,7 @@
                 android:text="Pinned Notes" />
 
             <TextView
+                android:id="@+id/view_all_pinned_notes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="View All" />
@@ -53,6 +54,7 @@
                 android:text="Interesting Idea" />
 
             <TextView
+                android:id="@+id/view_all_interesting_idea"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="View All" />
@@ -83,6 +85,7 @@
                 android:text="Goals" />
 
             <TextView
+                android:id="@+id/view_all_goals"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="View All" />
@@ -113,6 +116,7 @@
                 android:text="Routine Task" />
 
             <TextView
+                android:id="@+id/view_all_routine_task"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="View All" />
@@ -143,6 +147,7 @@
                 android:text="Guidance" />
 
             <TextView
+                android:id="@+id/view_all_guidance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="View All" />
@@ -173,6 +178,7 @@
                 android:text="Buy Something" />
 
             <TextView
+                android:id="@+id/view_all_buy_something"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="View All" />

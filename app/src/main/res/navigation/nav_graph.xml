@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/navigation_calendar"
         android:name="com.example.uts_map.FinishedFragment"
-        android:label="Calendar"
+        android:label="Finished"
         tools:layout="@layout/fragment_finished" />
     <fragment
         android:id="@+id/navigation_addnew"
@@ -27,12 +27,12 @@
     <fragment
         android:id="@+id/navigation_map"
         android:name="com.example.uts_map.SearchFragment"
-        android:label="Map"
+        android:label="Search"
         tools:layout="@layout/fragment_search" />
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.uts_map.ProfileFragment"
-        android:label="Profile"
+        android:label="Setting"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/editProfileFragment"
