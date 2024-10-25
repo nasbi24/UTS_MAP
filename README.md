@@ -2,7 +2,7 @@
 
 Aplikasi ini adalah aplikasi *[TET CATET]* yang dibangun menggunakan *Android Studio* dengan bahasa pemrograman Kotlin. Tujuan dari aplikasi ini adalah untuk *[membantu pengguna dalam membuat notes/catatan yang bisa diintegrasikan dengan pencantuman gambar]. Aplikasi ini memiliki tampilan yang sederhana namun fungsional, dengan fitur utama yang memungkinkan pengguna **[untuk leluasa membuat, mengedit, dan mengatur catatannya]*.
 
-## B. Anggota Kelompok
+## B. Kelompok *[KIJANG LGX]*
 
 1. *[Bonifasius Martin Wibawa]* - *[00000068324]*
 2. *[Nathaniel Ezra Anasbi]* - *[00000068232]*
