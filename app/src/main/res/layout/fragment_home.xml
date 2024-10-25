@@ -24,8 +24,8 @@
             <TextView
                 android:id="@+id/view_all_pinned_notes"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="View All" />
+                android:layout_height="wrap_content"/>
+<!--                android:text="View All" />-->
         </LinearLayout>
 
         <HorizontalScrollView
@@ -56,8 +56,8 @@
             <TextView
                 android:id="@+id/view_all_interesting_idea"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="View All" />
+                android:layout_height="wrap_content"/>
+<!--                android:text="View All" />-->
         </LinearLayout>
 
         <HorizontalScrollView
@@ -87,8 +87,8 @@
             <TextView
                 android:id="@+id/view_all_goals"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="View All" />
+                android:layout_height="wrap_content"/>
+<!--                android:text="View All" />-->
         </LinearLayout>
 
         <HorizontalScrollView
@@ -118,8 +118,8 @@
             <TextView
                 android:id="@+id/view_all_routine_task"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="View All" />
+                android:layout_height="wrap_content"/>
+<!--                android:text="View All" />-->
         </LinearLayout>
 
         <HorizontalScrollView
@@ -149,8 +149,8 @@
             <TextView
                 android:id="@+id/view_all_guidance"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="View All" />
+                android:layout_height="wrap_content"/>
+<!--                android:text="View All" />-->
         </LinearLayout>
 
         <HorizontalScrollView
@@ -180,8 +180,8 @@
             <TextView
                 android:id="@+id/view_all_buy_something"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="View All" />
+                android:layout_height="wrap_content"/>
+<!--                android:text="View All" />-->
         </LinearLayout>
 
         <HorizontalScrollView

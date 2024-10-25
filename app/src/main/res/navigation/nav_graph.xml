@@ -61,4 +61,18 @@
         android:id="@+id/viewAllFragment"
         android:name="com.example.uts_map.ViewAllFragment"
         android:label="ViewAllFragment" />
+<!--    janlup pake logic!!!-->
+    <fragment
+        android:id="@+id/viewAllFragment"
+        android:name="com.example.uts_map.ViewAllFragment"
+        android:label="View All">
+        <action
+            android:id="@+id/action_viewAllFragment_to_noteDetailFragment"
+            app:destination="@id/noteDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/noteDetailFragment"
+        android:name="com.example.uts_map.NoteDetailFragment"
+        android:label="Note Detail" />
 </navigation>
