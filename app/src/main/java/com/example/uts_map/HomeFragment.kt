@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -18,6 +19,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.google.firebase.storage.FirebaseStorage
 
 class HomeFragment : Fragment() {
@@ -145,6 +147,7 @@ class HomeFragment : Fragment() {
         // Fetch and display other notes
         firestore.collection("notes")
             .whereEqualTo("user", user)
+            .orderBy("date", Query.Direction.DESCENDING)
             .get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {
@@ -176,6 +179,8 @@ class HomeFragment : Fragment() {
                         }
                     }
                 }
+            }.addOnFailureListener { e ->
+                Log.e("HomeFragment", "Error fetching documents", e)
             }
     }
 
