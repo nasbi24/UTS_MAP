@@ -33,12 +33,14 @@
 
         <!-- Interesting Idea card -->
         <androidx.cardview.widget.CardView
+            android:id="@+id/card_interesting_idea"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             app:cardElevation="4dp"
             app:cardCornerRadius="8dp"
-            app:layout_columnWeight="1">
+            app:layout_columnWeight="1"
+            android:onClick="onCardClick">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -70,12 +72,14 @@
 
         <!-- Goals card -->
         <androidx.cardview.widget.CardView
+            android:id="@+id/card_goals"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             app:cardElevation="4dp"
             app:cardCornerRadius="8dp"
-            app:layout_columnWeight="1">
+            app:layout_columnWeight="1"
+            android:onClick="onCardClick">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -107,6 +111,8 @@
 
         <!-- Guidance card -->
         <androidx.cardview.widget.CardView
+            android:id="@+id/card_guidance"
+            android:onClick="onCardClick"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -144,6 +150,8 @@
 
         <!-- Buy Something card -->
         <androidx.cardview.widget.CardView
+            android:id="@+id/card_buy_something"
+            android:onClick="onCardClick"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -181,6 +189,8 @@
 
         <!-- Routine Tasks card -->
         <androidx.cardview.widget.CardView
+            android:id="@+id/card_routine_tasks"
+            android:onClick="onCardClick"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"

@@ -9,11 +9,15 @@
         android:id="@+id/navigation_home"
         android:name="com.example.uts_map.HomeFragment"
         android:label="Home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_noteDetailFragment"
+            app:destination="@id/noteDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_calendar"
         android:name="com.example.uts_map.FinishedFragment"
-        android:label="Calendar"
+        android:label="Finished"
         tools:layout="@layout/fragment_finished" />
     <fragment
         android:id="@+id/navigation_addnew"
@@ -23,11 +27,52 @@
     <fragment
         android:id="@+id/navigation_map"
         android:name="com.example.uts_map.SearchFragment"
-        android:label="Map"
+        android:label="Search"
         tools:layout="@layout/fragment_search" />
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.uts_map.SettingFragment"
-        android:label="Profile"
-        tools:layout="@layout/fragment_setting" />
+        android:name="com.example.uts_map.ProfileFragment"
+        android:label="Setting"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.uts_map.EditProfileFragment"
+        android:label="Edit Profile"
+        tools:layout="@layout/fragment_edit_profile" />
+    <action
+        android:id="@+id/action_profileFragment_to_editProfileFragment"
+        app:destination="@id/editProfileFragment" />
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="com.example.uts_map.ChangePasswordFragment"
+        android:label="Change Password"
+        tools:layout="@layout/fragment_change_password" />
+    <action
+        android:id="@+id/action_profileFragment_to_changePasswordFragment"
+        app:destination="@id/changePasswordFragment" />
+    <fragment
+        android:id="@+id/noteDetailFragment"
+        android:name="com.example.uts_map.NoteDetailFragment"
+        android:label="Note Detail" />
+    <action
+        android:id="@+id/action_homeFragment_to_viewAllFragment"
+        app:destination="@id/viewAllFragment" />
+    <fragment
+        android:id="@+id/viewAllFragment"
+        android:name="com.example.uts_map.ViewAllFragment"
+        android:label="ViewAllFragment" />
+<!--    janlup pake logic!!!-->
+    <fragment
+        android:id="@+id/viewAllFragment"
+        android:name="com.example.uts_map.ViewAllFragment"
+        android:label="View All">
+        <action
+            android:id="@+id/action_viewAllFragment_to_noteDetailFragment"
+            app:destination="@id/noteDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/noteDetailFragment"
+        android:name="com.example.uts_map.NoteDetailFragment"
+        android:label="Note Detail" />
 </navigation>

@@ -9,10 +9,6 @@
         android:icon="@drawable/icon_finished"
         android:title="Finished" />
     <item
-        android:id="@+id/navigation_addnew"
-        android:icon="@drawable/icon_add_circle"
-        android:title="New" />
-    <item
         android:id="@+id/navigation_map"
         android:icon="@drawable/icon_search"
         android:title="Search" />

@@ -1,59 +1,43 @@
 package com.example.uts_map
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class NewNotes : Fragment(R.layout.fragment_new_notes) {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [NewNotes.newInstance] factory method to
- * create an instance of this fragment.
- */
-class NewNotes : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+        // Setup listener for card clicks
+        view.findViewById<View>(R.id.card_interesting_idea).setOnClickListener {
+            navigateToNotesActivity("Interesting Idea")
+        }
+
+        view.findViewById<View>(R.id.card_goals).setOnClickListener {
+            navigateToNotesActivity("Goals")
+        }
+
+        view.findViewById<View>(R.id.card_guidance).setOnClickListener {
+            navigateToNotesActivity("Guidance")
+        }
+
+        view.findViewById<View>(R.id.card_buy_something).setOnClickListener {
+            navigateToNotesActivity("Buy Something")
+        }
+
+        view.findViewById<View>(R.id.card_routine_tasks).setOnClickListener {
+            navigateToNotesActivity("Routine Tasks")
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_new_notes, container, false)
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment NewNotes.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            NewNotes().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    // Function to navigate to NotesActivity
+    private fun navigateToNotesActivity(category: String) {
+        val intent = Intent(requireContext(), NotesActivity::class.java)
+        intent.putExtra("CATEGORY", category) // Send category data
+        startActivity(intent)
     }
 }

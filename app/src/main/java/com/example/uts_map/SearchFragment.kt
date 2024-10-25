@@ -1,59 +1,155 @@
 package com.example.uts_map
 
+import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import android.widget.*
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SearchFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SearchFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var backButton: ImageButton
+    private lateinit var searchInput: EditText
+    private lateinit var searchButton: ImageButton
+    private lateinit var searchHistory: RecyclerView
+    private lateinit var recentSearchHeader: TextView
+    private lateinit var searchResultsRecyclerView: RecyclerView
+    private lateinit var firestore: FirebaseFirestore
+    private val recentSearches = mutableListOf<String>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false)
+        val view = inflater.inflate(R.layout.fragment_search, container, false)
+
+        // Initialize UI components
+        backButton = view.findViewById(R.id.backButton)
+        searchInput = view.findViewById(R.id.searchInput)
+        searchButton = view.findViewById(R.id.searchButton)
+        searchHistory = view.findViewById(R.id.searchHistory)
+        recentSearchHeader = view.findViewById(R.id.recentSearchHeader)
+        searchResultsRecyclerView = view.findViewById(R.id.searchResultsRecyclerView)
+        firestore = FirebaseFirestore.getInstance()
+
+        // Show the keyboard when the fragment is opened
+        searchInput.requestFocus()
+        val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.showSoftInput(searchInput, InputMethodManager.SHOW_IMPLICIT)
+
+        // Handle back button click
+        backButton.setOnClickListener {
+            requireActivity().onBackPressed()
+        }
+
+        // Handle search button click
+        searchButton.setOnClickListener {
+            val query = searchInput.text.toString()
+            if (query.isNotEmpty()) {
+                performSearch(query, )
+                addRecentSearch(query)
+            }
+        }
+
+        // Load recent search history
+        loadRecentSearches()
+
+        // Set up RecyclerView
+        searchResultsRecyclerView.layoutManager = LinearLayoutManager(context)
+        searchHistory.layoutManager = LinearLayoutManager(context)
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MapFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SearchFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun performSearch(query: String) {
+        val userEmail = FirebaseAuth.getInstance().currentUser?.email ?: ""
+        val lowercaseQuery = query.lowercase()
+        firestore.collection("notes")
+            .whereEqualTo("user", userEmail)
+            .get()
+            .addOnSuccessListener { documents ->
+                val results = documents.mapNotNull { document ->
+                    val title = document.getString("title") ?: return@mapNotNull null
+                    if (title.lowercase().contains(lowercaseQuery)) {
+                        Note(
+                            id = document.id,
+                            title = title,
+                            content = document.getString("content") ?: "",
+                            category = document.getString("category") ?: ""
+                        )
+                    } else {
+                        null
+                    }
                 }
+                displaySearchResults(results)
             }
+            .addOnFailureListener {
+                Toast.makeText(context, "Failed to search notes", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun displaySearchResults(results: List<Note>) {
+        val adapter = SearchResultsAdapter(requireContext(), results)
+        searchResultsRecyclerView.adapter = adapter
+        searchHistory.visibility = View.GONE
+        recentSearchHeader.visibility = View.GONE
+    }
+
+    private fun addRecentSearch(query: String) {
+        if (recentSearches.contains(query)) {
+            recentSearches.remove(query)
+        }
+        recentSearches.add(0, query)
+        if (recentSearches.size > 10) {
+            recentSearches.removeAt(10)
+        }
+        saveRecentSearches()
+        setupSearchHistory(recentSearches)
+    }
+
+    private fun loadRecentSearches() {
+        val sharedPreferences = requireContext().getSharedPreferences("search_prefs", Context.MODE_PRIVATE)
+        val searches = sharedPreferences.getStringSet("recent_searches", setOf())?.toMutableList() ?: mutableListOf()
+        recentSearches.clear()
+        recentSearches.addAll(searches)
+        setupSearchHistory(recentSearches)
+    }
+
+    private fun saveRecentSearches() {
+        val sharedPreferences = requireContext().getSharedPreferences("search_prefs", Context.MODE_PRIVATE)
+        with(sharedPreferences.edit()) {
+            putStringSet("recent_searches", recentSearches.toSet())
+            apply()
+        }
+    }
+
+    private fun setupSearchHistory(searches: List<String>) {
+        if (searches.isEmpty()) {
+            recentSearchHeader.visibility = View.GONE
+        } else {
+            recentSearchHeader.visibility = View.VISIBLE
+        }
+
+        val adapter = RecentSearchAdapter(requireContext(), searches, ::removeRecentSearch, ::performSearch)
+        searchHistory.adapter = adapter
+    }
+
+    private fun removeRecentSearch(query: String) {
+        recentSearches.remove(query)
+        saveRecentSearches()
+        setupSearchHistory(recentSearches)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(searchInput.windowToken, 0)
     }
 }

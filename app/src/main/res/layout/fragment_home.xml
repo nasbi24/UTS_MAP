@@ -22,15 +22,17 @@
                 android:text="Pinned Notes" />
 
             <TextView
+                android:id="@+id/view_all_pinned_notes"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="View All" />
+                android:layout_height="wrap_content"/>
+<!--                android:text="View All" />-->
         </LinearLayout>
 
         <HorizontalScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="none">
+            android:layout_height="300dp"
+            android:scrollbars="none"
+            android:paddingBottom="8dp">
 
             <LinearLayout
                 android:id="@+id/fragment_container_pinned_notes"
@@ -52,9 +54,10 @@
                 android:text="Interesting Idea" />
 
             <TextView
+                android:id="@+id/view_all_interesting_idea"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="View All" />
+                android:layout_height="wrap_content"/>
+<!--                android:text="View All" />-->
         </LinearLayout>
 
         <HorizontalScrollView
@@ -82,9 +85,10 @@
                 android:text="Goals" />
 
             <TextView
+                android:id="@+id/view_all_goals"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="View All" />
+                android:layout_height="wrap_content"/>
+<!--                android:text="View All" />-->
         </LinearLayout>
 
         <HorizontalScrollView
@@ -112,9 +116,10 @@
                 android:text="Routine Task" />
 
             <TextView
+                android:id="@+id/view_all_routine_task"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="View All" />
+                android:layout_height="wrap_content"/>
+<!--                android:text="View All" />-->
         </LinearLayout>
 
         <HorizontalScrollView
@@ -129,5 +134,72 @@
                 android:orientation="horizontal" />
         </HorizontalScrollView>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Guidance" />
+
+            <TextView
+                android:id="@+id/view_all_guidance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+<!--                android:text="View All" />-->
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/fragment_container_guidance"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal" />
+        </HorizontalScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Buy Something" />
+
+            <TextView
+                android:id="@+id/view_all_buy_something"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+<!--                android:text="View All" />-->
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/fragment_container_buy_something"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal" />
+        </HorizontalScrollView>
+
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
+
 </ScrollView>

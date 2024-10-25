@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomFabShape" parent="ShapeAppearanceOverlay.MaterialComponents.FloatingActionButton">
+        <item name="cornerSize">36dp</item> <!-- Ubah radius di sini -->
+    </style>
+
+</resources>
