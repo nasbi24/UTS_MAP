@@ -6,8 +6,8 @@
         android:title="Home" />
     <item
         android:id="@+id/navigation_calendar"
-        android:icon="@drawable/icon_finished"
-        android:title="Finished" />
+        android:icon="@drawable/ic_calendar"
+        android:title="Calendar" />
     <item
         android:id="@+id/navigation_map"
         android:icon="@drawable/icon_search"

@@ -16,9 +16,9 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_calendar"
-        android:name="com.example.uts_map.FinishedFragment"
-        android:label="Finished"
-        tools:layout="@layout/fragment_finished" />
+        android:name="com.example.uts_map.CalendarFragment"
+        android:label="Calendar"
+        tools:layout="@layout/fragment_calendar" />
     <fragment
         android:id="@+id/navigation_addnew"
         android:name="com.example.uts_map.NewNotes"
