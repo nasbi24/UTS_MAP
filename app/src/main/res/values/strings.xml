@@ -8,4 +8,7 @@
     <string name="back_button">Back</string>
     <string name="search_hint">Search...</string>
     <string name="recent_searches">RECENT SEARCHES</string>
+    <string name="email_warn">Changing email address information means you
+need to re-login to the apps.</string>
+
 </resources>

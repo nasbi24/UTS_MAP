@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
@@ -44,7 +45,7 @@ class EditProfileFragment : Fragment() {
         val ivEditProfilePic = view.findViewById<ImageView>(R.id.ivEditProfilePic)
         val etEditName = view.findViewById<EditText>(R.id.etEditName)
         val etEditEmail = view.findViewById<EditText>(R.id.etEditEmail)
-        val btnUploadPic = view.findViewById<Button>(R.id.btnUploadPic)
+        val btnUploadPic = view.findViewById<TextView>(R.id.btnUploadPic)
         val btnCapturePic = view.findViewById<Button>(R.id.btnCapturePic)
         val btnSave = view.findViewById<Button>(R.id.btnSave)
 
