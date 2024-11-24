@@ -7,6 +7,7 @@ import android.text.TextWatcher
 import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -53,8 +54,8 @@ class LoginActivity : AppCompatActivity() {
                 }
         }
 
-        val btnRegister = findViewById<Button>(R.id.btnGoRegister)
-        btnRegister.setOnClickListener {
+        val tvRegister = findViewById<TextView>(R.id.tvRegister)
+        tvRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
