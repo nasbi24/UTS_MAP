@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener
 
-
 class CalendarFragment : Fragment() {
 
     private lateinit var calendarView: MaterialCalendarView
@@ -23,10 +22,10 @@ class CalendarFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_calendar, container, false)
         calendarView = view.findViewById(R.id.calendarView)
-//        recyclerViewAgenda = view.findViewById(R.id.recyclerViewAgenda)
+        recyclerViewAgenda = view.findViewById(R.id.recyclerViewAgenda)
 
         setupCalendar()
-        //setupAgendas()
+        setupAgendas()
 
         return view
     }
@@ -34,17 +33,17 @@ class CalendarFragment : Fragment() {
     private fun setupCalendar() {
         calendarView.setOnDateChangedListener(OnDateSelectedListener { widget, date, selected ->
             if (selected) {
-                // Menambahkan tanggal yang dipilih ke dalam daftar agenda
-                val agenda = "Agenda untuk ${date.year}-${date.month + 1}-${date.day}" // month adalah 0-based
-                agendas.add(agenda)
-                //refreshAgenda()
+                // Filter notes for the selected date
+                val selectedDate = "${date.year}-${date.month + 1}-${date.day}"
+                val filteredAgendas = agendas.filter { it.contains(selectedDate) }
+                refreshAgenda(filteredAgendas)
             }
         })
     }
 
-    private fun refreshAgenda() {
+    private fun refreshAgenda(filteredAgendas: List<String>) {
         recyclerViewAgenda.layoutManager = LinearLayoutManager(context)
-        recyclerViewAgenda.adapter = AgendaAdapter(agendas)
+        recyclerViewAgenda.adapter = AgendaAdapter(filteredAgendas)
     }
 
     private fun setupAgendas() {
