@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "150348168999",
+    "project_id": "map-lec",
+    "storage_bucket": "map-lec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:150348168999:android:89f2ebbc960220de3ab302",
+        "android_client_info": {
+          "package_name": "com.example.uts_map"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCk8MmbvtdYLOQanAiqxWU6Rp__pkAg6jo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
