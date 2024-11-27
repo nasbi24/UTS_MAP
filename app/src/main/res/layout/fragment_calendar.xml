@@ -13,7 +13,7 @@
         app:mcv_showOtherDates="all"
         app:mcv_selectionColor="@color/purple" />
 
-    <RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewAgenda"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
