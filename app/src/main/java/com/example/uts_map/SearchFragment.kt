@@ -86,13 +86,18 @@ class SearchFragment : Fragment() {
                     val category = document.getString("category") ?: return@mapNotNull null
                     val date = document.getTimestamp("date")?.toDate()?.toString() ?: return@mapNotNull null
 
-                    Note(
-                        id = noteId,
-                        title = title,
-                        content = content,
-                        category = category,
-                        date = date
-                    )
+                    if (title.lowercase().contains(lowercaseQuery)) {
+
+                        Note(
+                            id = noteId,
+                            title = title,
+                            content = content,
+                            category = category,
+                            date = date
+                        )
+                    }else{
+                        null;
+                    }
                 }
                 displaySearchResults(results)
             }
@@ -113,6 +118,8 @@ class SearchFragment : Fragment() {
             findNavController().navigate(R.id.action_searchFragment_to_noteDetailFragment, bundle)
         }
         searchResultsRecyclerView.adapter = adapter
+        searchHistory.visibility = View.GONE
+        recentSearchHeader.visibility = View.GONE
     }
 
     private fun addRecentSearch(query: String) {
