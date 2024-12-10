@@ -78,4 +78,7 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.2.1")
 
     implementation("com.google.android.gms:play-services-auth:20.4.0")
+
+    implementation("com.jakewharton.threetenabp:threetenabp:1.3.1")
+
 }

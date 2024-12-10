@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
@@ -50,10 +51,7 @@ class CalendarFragment : Fragment() {
                 putString("NOTE_CATEGORY", note.category)
                 putString("NOTE_DATE", note.date)
             }
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, NoteDetailFragment::class.java, bundle)
-                .addToBackStack(null)
-                .commit()
+            findNavController().navigate(R.id.noteDetailFragment, bundle)
         }
         recyclerViewAgenda.layoutManager = LinearLayoutManager(context)
         recyclerViewAgenda.adapter = agendaAdapter
