@@ -77,6 +77,28 @@
                 android:gravity="top"
                 android:layout_marginTop="8dp" />
 
+            <!-- Reminders Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reminders"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <Button
+                android:id="@+id/btn_add_reminder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Reminder"
+                android:layout_marginBottom="8dp" />
+
+            <LinearLayout
+                android:id="@+id/reminder_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
             <!-- Add Images Section -->
             <TextView
                 android:layout_width="wrap_content"

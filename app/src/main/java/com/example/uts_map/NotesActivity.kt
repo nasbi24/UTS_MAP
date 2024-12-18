@@ -48,6 +48,7 @@ class NotesActivity : AppCompatActivity() {
         contentEditText = findViewById(R.id.et_note_content)
         val saveButton = findViewById<Button>(R.id.btn_save)
         val addImageButton = findViewById<Button>(R.id.btn_add_image)
+        val addReminderButton = findViewById<Button>(R.id.btn_add_reminder)
         val backButton = findViewById<TextView>(R.id.back)
         fragmentContainer = findViewById(R.id.fragment_container)
 
@@ -62,6 +63,10 @@ class NotesActivity : AppCompatActivity() {
 
         addImageButton.setOnClickListener {
             slideUpFragment()
+        }
+
+        addReminderButton.setOnClickListener {
+            slideUpReminderFragment()
         }
 
         backButton.setOnClickListener {
@@ -234,6 +239,91 @@ class NotesActivity : AppCompatActivity() {
             val imageView = imageLayout.getChildAt(0) as ImageView
             if (Glide.with(this).load(imagePath).equals(imageView.drawable)) {
                 imageContainer.removeViewAt(i)
+                break
+            }
+        }
+    }
+
+    private fun slideUpReminderFragment() {
+        val height = fragmentContainer.height
+        val slideUp = ObjectAnimator.ofFloat(fragmentContainer, "translationY", height.toFloat(), 0f)
+        slideUp.duration = 300
+        slideUp.start()
+
+        slideUp.addListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator) {
+                showReminderUploadFragment()
+            }
+        })
+    }
+
+    private fun showReminderUploadFragment() {
+        val fragment = ReminderUploadFragment().apply {
+            arguments = Bundle().apply {
+                putString("NOTE_ID", noteId)
+            }
+        }
+        supportFragmentManager.commit {
+            replace(R.id.fragment_container, fragment)
+            addToBackStack(null)
+        }
+    }
+
+    fun addReminderToLayout(date: String, title: String, description: String) {
+        val reminderContainer = findViewById<LinearLayout>(R.id.reminder_container)
+
+        val textView = TextView(this).apply {
+            text = "$date - $title: $description"
+        }
+
+        val deleteButton = Button(this).apply {
+            text = "Delete"
+            setOnClickListener {
+                deleteReminder(date, title, description)
+            }
+        }
+
+        val reminderLayout = LinearLayout(this).apply {
+            orientation = LinearLayout.VERTICAL
+            addView(textView)
+            addView(deleteButton)
+        }
+
+        reminderContainer.addView(reminderLayout)
+    }
+
+    private fun deleteReminder(date: String, title: String, description: String) {
+        val remindersCollection = firestore.collection("reminders")
+        remindersCollection
+            .whereEqualTo("date", date)
+            .whereEqualTo("title", title)
+            .whereEqualTo("description", description)
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    remindersCollection.document(document.id).delete()
+                        .addOnSuccessListener {
+                            Toast.makeText(this, "Reminder deleted successfully", Toast.LENGTH_SHORT).show()
+                            // Optionally, remove the reminder from the layout
+                            removeReminderFromLayout(date, title, description)
+                        }
+                        .addOnFailureListener {
+                            Toast.makeText(this, "Failed to delete reminder", Toast.LENGTH_SHORT).show()
+                        }
+                }
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "Failed to find reminder", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun removeReminderFromLayout(date: String, title: String, description: String) {
+        val reminderContainer = findViewById<LinearLayout>(R.id.reminder_container)
+        for (i in 0 until reminderContainer.childCount) {
+            val reminderLayout = reminderContainer.getChildAt(i) as LinearLayout
+            val textView = reminderLayout.getChildAt(0) as TextView
+            if (textView.text == "$date - $title: $description") {
+                reminderContainer.removeViewAt(i)
                 break
             }
         }
