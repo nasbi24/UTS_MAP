@@ -242,7 +242,7 @@ class EditNoteActivity : AppCompatActivity() {
     }
 
     private fun showReminderUploadFragment() {
-        val fragment = ReminderUploadFragment().apply {
+        val fragment = EditNoteReminderUploadFragment().apply {
             arguments = Bundle().apply {
                 putString("NOTE_ID", noteId)
             }
