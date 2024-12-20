@@ -8,6 +8,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.FrameLayout
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -46,10 +47,10 @@ class NotesActivity : AppCompatActivity() {
 
         titleEditText = findViewById(R.id.et_note_title)
         contentEditText = findViewById(R.id.et_note_content)
-        val saveButton = findViewById<Button>(R.id.btn_save)
-        val addImageButton = findViewById<Button>(R.id.btn_add_image)
-        val addReminderButton = findViewById<Button>(R.id.btn_add_reminder)
-        val backButton = findViewById<TextView>(R.id.back)
+        val saveButton = findViewById<ImageButton>(R.id.btn_save)
+        val addImageButton = findViewById<ImageButton>(R.id.btn_add_image)
+        val addReminderButton = findViewById<ImageButton>(R.id.btn_add_reminder)
+        val backButton = findViewById<ImageButton>(R.id.back)
         fragmentContainer = findViewById(R.id.fragment_container)
 
         category = intent.getStringExtra("CATEGORY") ?: return

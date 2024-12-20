@@ -37,10 +37,10 @@ class EditNoteActivity : AppCompatActivity() {
         contentEditText = findViewById(R.id.et_note_content)
         categorySpinner = findViewById(R.id.spinner_note_category)
         fragmentContainer = findViewById(R.id.fragment_container)
-        val saveButton = findViewById<Button>(R.id.btn_save)
-        val backButton = findViewById<TextView>(R.id.back)
-        val addImageButton = findViewById<Button>(R.id.btn_add_image)
-        val addReminderButton = findViewById<Button>(R.id.btn_add_reminder)
+        val saveButton = findViewById<ImageButton>(R.id.btn_save)
+        val backButton = findViewById<ImageButton>(R.id.back)
+        val addImageButton = findViewById<ImageButton>(R.id.btn_add_image)
+        val addReminderButton = findViewById<ImageButton>(R.id.btn_add_reminder)
 
         // Set up the category spinner
         val categories = arrayOf("Interesting Idea", "Goals", "Routine Tasks", "Guidance", "Buy Something")
