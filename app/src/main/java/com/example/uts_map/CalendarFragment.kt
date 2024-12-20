@@ -11,9 +11,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.prolificinteractive.materialcalendarview.CalendarDay
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener
-import java.text.SimpleDateFormat
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 class CalendarFragment : Fragment() {
@@ -60,12 +62,32 @@ class CalendarFragment : Fragment() {
     private fun setupCalendar() {
         calendarView.setOnDateChangedListener(OnDateSelectedListener { widget, date, selected ->
             if (selected) {
-                val calendar = Calendar.getInstance()
-                calendar.set(date.year, date.month - 1, date.day) // Subtract 1 from the month
-                val formattedDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(calendar.time)
+                val localDate = java.time.LocalDate.of(date.year, date.month, date.day)
+                val formattedDate = localDate.format(DateTimeFormatter.ISO_DATE)
                 fetchNotesForDate(formattedDate)
             }
         })
+        fetchAllNoteDates()
+    }
+
+    private fun fetchAllNoteDates() {
+        val user = auth.currentUser?.email ?: return
+        firestore.collection("notes")
+            .whereEqualTo("user", user)
+            .get()
+            .addOnSuccessListener { documents ->
+                val dates = documents.mapNotNull { document ->
+                    val firebaseTimestamp = document.getTimestamp("date") ?: return@mapNotNull null
+                    val parsedDate = firebaseTimestamp.toDate().toInstant()
+                        .atZone(ZoneId.systemDefault())
+                        .toLocalDate()
+                    CalendarDay.from(parsedDate.year, parsedDate.monthValue, parsedDate.dayOfMonth)
+                }
+                calendarView.addDecorator(HeatMapDecorator(dates))
+            }
+            .addOnFailureListener { e ->
+                e.printStackTrace()
+            }
     }
 
     private fun fetchNotesForDate(date: String) {
@@ -76,19 +98,19 @@ class CalendarFragment : Fragment() {
             .addOnSuccessListener { documents ->
                 val notes = documents.mapNotNull { document ->
                     val firebaseTimestamp = document.getTimestamp("date") ?: return@mapNotNull null
-                    val parsedDate = firebaseTimestamp.toDate()
-                    val formattedFirebaseDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(parsedDate)
-                    Log.d("CalendarFragment", "Selected date: $date")
-                    Log.d("CalendarFragment", "Firebase date: $formattedFirebaseDate")
+                    val parsedDate = firebaseTimestamp.toDate().toInstant()
+                        .atZone(ZoneId.systemDefault())
+                        .toLocalDate()
+                    val formattedFirebaseDate = parsedDate.format(DateTimeFormatter.ISO_DATE)
+
                     if (formattedFirebaseDate == date) {
-                        val title = document.getString("title") ?: ""
-                        Log.d("CalendarFragment", "Note title: $title")
+                        Log.d("CalendarFragment", "Note title: ${document.getString("title")}")
                         Note(
                             id = document.id,
                             title = document.getString("title") ?: "",
                             content = document.getString("content") ?: "",
                             category = document.getString("category") ?: "",
-                            date = SimpleDateFormat("MMMM d, yyyy 'at' h:mm:ss a z", Locale.getDefault()).format(parsedDate)
+                            date = parsedDate.format(DateTimeFormatter.ofPattern("MMMM d, yyyy"))
                         )
                     } else {
                         null
