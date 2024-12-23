@@ -2,9 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="purple">#9444FC</color>
+    <color name="blue">#0400F9</color>
     <color name="gray">#9E9E9E</color>
-    <color name="nav">#DFD3FB</color>
+    <color name="nav">#0400F9</color>
     <color name="red">#FF0000</color>
     <color name="yellow">#FFD74F</color>
 
@@ -13,6 +13,6 @@
     <color name="routine_tasks_color">#FDFB71</color>
     <color name="guidance_color">#F8516F</color>
     <color name="buy_something_color">#60D889</color>
-    <color name="default_category_color">#9444fc</color>
+    <color name="default_category_color">#0400F9</color>
 
 </resources>
