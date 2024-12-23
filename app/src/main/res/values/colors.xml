@@ -7,6 +7,7 @@
     <color name="nav">#0400F9</color>
     <color name="red">#FF0000</color>
     <color name="yellow">#FFD74F</color>
+    <color name="BackgroundColor">#AEFFFF</color>
 
     <color name="interesting_idea_color">#8A5CC5</color>
     <color name="goals_color">#FFDF6B</color>
