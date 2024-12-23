@@ -81,4 +81,7 @@ dependencies {
 
     implementation("com.jakewharton.threetenabp:threetenabp:1.3.1")
 
+    implementation("com.google.firebase:firebase-firestore:24.0.0")
+    implementation("com.google.firebase:firebase-messaging:24.0.0")
+
 }
