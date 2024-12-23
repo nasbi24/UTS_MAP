@@ -56,7 +56,7 @@
             android:textSize="14sp"
             android:gravity="center"
             android:textColor="@android:color/white"
-            android:background="@color/purple" />
+            android:background="@color/blue" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
