@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -166,10 +167,21 @@ class RegisterActivity : AppCompatActivity() {
             val passwordInput = etPassword.text.toString().trim()
             val retypePasswordInput = etRetypePassword.text.toString().trim()
 
-            btnRegister.isEnabled = fullNameInput.isNotEmpty() && emailInput.isNotEmpty() &&
+            val isInputValid = fullNameInput.isNotEmpty() && emailInput.isNotEmpty() &&
                     passwordInput.isNotEmpty() && retypePasswordInput.isNotEmpty() &&
                     Patterns.EMAIL_ADDRESS.matcher(emailInput).matches() &&
                     passwordInput == retypePasswordInput
+
+            // Mengatur enabled dan backgroundTint tombol Register
+            btnRegister.isEnabled = isInputValid
+            if (isInputValid) {
+                // Menghapus background tint ketika semua input valid
+                btnRegister.backgroundTintList = null
+            } else {
+                // Memberikan warna tint ketika input belum lengkap/valid
+                btnRegister.backgroundTintList =
+                    ContextCompat.getColorStateList(this@RegisterActivity, R.color.gray)
+            }
         }
 
         override fun afterTextChanged(s: Editable?) {}

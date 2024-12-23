@@ -41,7 +41,7 @@
             app:cardCornerRadius="8dp"
             app:layout_columnWeight="1"
             android:onClick="onCardClick"
-            app:cardBackgroundColor="#8A5CC5">
+            app:cardBackgroundColor="@color/blue">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -55,7 +55,7 @@
                     android:id="@+id/myImageView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/interesting_idea"
+                    android:src="@drawable/interesting_ideaa"
                    />
 
                 <TextView
