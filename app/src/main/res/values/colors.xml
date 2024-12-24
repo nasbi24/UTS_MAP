@@ -8,6 +8,8 @@
     <color name="red">#FF0000</color>
     <color name="yellow">#FFD74F</color>
     <color name="BackgroundColor">#AEFFFF</color>
+    <color name="mediumblue">#0084FF</color>
+    <color name="lightblue">#0288D1</color>
 
     <color name="interesting_idea_color">#8A5CC5</color>
     <color name="goals_color">#FFDF6B</color>
