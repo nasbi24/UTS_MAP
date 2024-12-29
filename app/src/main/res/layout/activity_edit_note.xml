@@ -50,7 +50,7 @@
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,19 +69,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:padding="8dp"
-                />
+                android:padding="8dp" />
             <!-- Input Judul Notes -->
             <EditText
                 android:id="@+id/et_note_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:background="@null"
                 android:hint="Enter Note Title"
                 android:padding="8dp"
                 android:textSize="24sp"
-                android:textStyle="bold"
-                android:background="@null"/>
+                android:textStyle="bold" />
 
             <!-- Input Isi Notes -->
             <EditText
@@ -89,12 +88,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:background="@null"
                 android:gravity="top"
                 android:hint="Enter Note Content"
                 android:minHeight="300dp"
                 android:padding="16dp"
-                android:textSize="16sp"
-                android:background="@null"/>
+                android:textSize="16sp" />
 
             <!-- Reminders Section -->
 
@@ -110,7 +109,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical" />
-
 
 
             <!-- Add Images Section -->
