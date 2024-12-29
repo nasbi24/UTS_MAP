@@ -277,6 +277,17 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun getCategoryFontColor(category: String?): Int {
+        return when (category) {
+            "Interesting Idea" -> ContextCompat.getColor(requireContext(), R.color.white)
+            "Goals" -> ContextCompat.getColor(requireContext(), R.color.black)
+            "Routine Tasks" -> ContextCompat.getColor(requireContext(), R.color.black)
+            "Guidance" -> ContextCompat.getColor(requireContext(), R.color.white)
+            "Buy Something" -> ContextCompat.getColor(requireContext(), R.color.white)
+            else -> ContextCompat.getColor(requireContext(), R.color.default_category_color)
+        }
+    }
+
     private fun createNoteCard(title: String?, content: String?, category: String?): CardView? {
         if (!isAdded) return null
 
@@ -302,6 +313,8 @@ class HomeFragment : Fragment() {
 
         // Set background color based on category
         categoryTextView.setBackgroundColor(getCategoryColor(category))
+        categoryTextView.setTextColor(getCategoryFontColor(category))
+
 
         return cardView
     }

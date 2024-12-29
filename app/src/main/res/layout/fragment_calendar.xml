@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="400dp"
         app:mcv_showOtherDates="all"
-        app:mcv_selectionColor="@color/purple" />
+        app:mcv_selectionColor="@color/blue" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewAgenda"

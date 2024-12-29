@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -118,9 +119,21 @@ class LoginActivity : AppCompatActivity() {
             val emailInput = etEmail.text.toString().trim()
             val passwordInput = etPassword.text.toString().trim()
 
-            btnLogin.isEnabled = emailInput.isNotEmpty() && passwordInput.isNotEmpty()
+            val isInputValid = emailInput.isNotEmpty() && passwordInput.isNotEmpty()
+
+            // Mengatur enabled dan backgroundTint tombol Login
+            btnLogin.isEnabled = isInputValid
+            if (isInputValid) {
+                // Menghapus background tint ketika semua input valid
+                btnLogin.backgroundTintList = null
+            } else {
+                // Memberikan warna tint ketika input belum lengkap/valid
+                btnLogin.backgroundTintList =
+                    ContextCompat.getColorStateList(this@LoginActivity, R.color.gray) // Ganti dengan warna tint yang diinginkan
+            }
         }
 
         override fun afterTextChanged(s: Editable?) {}
     }
+
 }

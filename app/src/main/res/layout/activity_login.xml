@@ -33,6 +33,7 @@
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="0dp"
+
         android:layout_height="wrap_content"
         android:background="@drawable/button_background"
         android:textColor="@android:color/white"
@@ -49,6 +50,7 @@
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_marginTop="16dp"
+
         android:layout_marginRight="5dp"
         android:background="@android:color/darker_gray"
         app:layout_constraintEnd_toStartOf="@+id/tvOr"
@@ -87,9 +89,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@drawable/button_background_all"
+        android:background="@drawable/button_background_invert"
+        app:backgroundTint="@null"
         android:text="Login with Google"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/divider" />
@@ -100,7 +104,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Don't have any account? Register here"
-        android:textColor="@color/purple"
+        android:textColor="@color/blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnGoogleLogin"/>

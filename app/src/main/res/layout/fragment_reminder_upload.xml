@@ -3,8 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/rounded_corners_blue"
     tools:context=".ReminderUploadFragment">
 
+    <!-- Layout yang memenuhi layar -->
     <LinearLayout
         android:id="@+id/content_layout"
         android:layout_width="match_parent"
@@ -12,50 +15,90 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <EditText
-            android:id="@+id/et_reminder_date"
+        <!-- LinearLayout untuk tanggal dan waktu -->
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Select Date"
-            android:focusable="false"
-            android:clickable="true" />
+            android:layout_marginTop="6dp">
 
-        <EditText
-            android:id="@+id/et_reminder_time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Select Time"
-            android:focusable="false"
-            android:clickable="true" />
+            <EditText
+                android:id="@+id/et_reminder_date"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/input_field"
+                android:clickable="true"
+                android:focusable="false"
+                android:hint="Select Date"
+                android:padding="10dp"
+                android:drawableStart="@drawable/ic_calendar"
+                android:drawablePadding="6dp"/>
 
+            <EditText
+                android:id="@+id/et_reminder_time"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/input_field"
+                android:clickable="true"
+                android:focusable="false"
+                android:hint="Select Time"
+                android:padding="10dp"
+                android:drawableStart="@drawable/ic_time"
+                android:drawablePadding="6dp"/>
+        </LinearLayout>
+
+        <!-- Input untuk judul pengingat -->
         <EditText
             android:id="@+id/et_reminder_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Reminder Title" />
+            android:layout_marginTop="6dp"
+            android:background="@drawable/input_field"
+            android:hint="Enter Reminder Title"
+            android:padding="10dp" />
 
+        <!-- Input untuk deskripsi pengingat -->
         <EditText
             android:id="@+id/et_reminder_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Reminder Description" />
+            android:layout_marginTop="6dp"
+            android:background="@drawable/input_field"
+            android:hint="Enter Reminder Description"
+            android:padding="10dp" />
 
+        <!-- Tombol Add Reminder -->
         <Button
             android:id="@+id/btn_upload_reminder"
-            android:layout_width="wrap_content"
+            android:background="@drawable/button_background"
+            app:backgroundTint="@null"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="Add Reminder" />
 
+        <!-- Tombol Cancel -->
         <Button
+
             android:id="@+id/btn_cancel"
-            android:layout_width="wrap_content"
+            android:background="@drawable/button_background_invert"
+            android:theme="@style/Widget.AppCompat.Button"
+            app:backgroundTint="@null"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:text="Cancel" />
 
+        <!-- Progress bar -->
         <ProgressBar
+
             android:id="@+id/progress_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:visibility="gone" />
     </LinearLayout>
 
