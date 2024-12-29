@@ -14,7 +14,7 @@ class ReminderReceiver : BroadcastReceiver() {
         val description = intent.getStringExtra("description")
 
         val builder = NotificationCompat.Builder(context, "reminderChannel")
-            .setSmallIcon(R.drawable.ic_notification) // Ensure this drawable exists
+            .setSmallIcon(R.drawable.ic_notification)
             .setContentTitle(title)
             .setContentText(description)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
