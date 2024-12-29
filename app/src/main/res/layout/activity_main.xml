@@ -15,7 +15,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/blue"
+            android:background="@drawable/gradient_nav"
             app:titleTextColor="@color/white"
             app:navigationIconTint="@color/white"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="@color/nav"
+            android:background="@drawable/gradient_nav"
             app:itemIconTint="@color/nav_item_color"
             app:itemTextColor="@color/nav_item_color"
             app:menu="@menu/bottom_nav_menu" />
