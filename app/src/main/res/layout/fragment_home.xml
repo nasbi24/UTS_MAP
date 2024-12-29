@@ -1,6 +1,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:scrollbars="none">
 
     <LinearLayout
@@ -25,7 +27,6 @@
                 android:id="@+id/view_all_pinned_notes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-<!--                android:text="View All" />-->
         </LinearLayout>
 
         <HorizontalScrollView
@@ -57,7 +58,6 @@
                 android:id="@+id/view_all_interesting_idea"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-<!--                android:text="View All" />-->
         </LinearLayout>
 
         <HorizontalScrollView
@@ -69,7 +69,50 @@
                 android:id="@+id/fragment_container_interesting_idea"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:orientation="horizontal" />
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_interesting_idea"
+                    android:layout_width="200dp"
+                    android:layout_height="290dp"
+                    android:layout_margin="8dp"
+                    app:cardElevation="4dp"
+                    app:cardCornerRadius="8dp"
+                    android:onClick="onCardClick"
+                    app:cardBackgroundColor="@color/blue">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="start"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:id="@+id/myImageView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/interesting_ideaa" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Add New Interesting Idea"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"
+                            android:layout_marginTop="8dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Use free text area, feel free to write it all"
+                            android:textSize="12sp"
+                            android:layout_marginTop="4dp"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
         </HorizontalScrollView>
 
         <LinearLayout
@@ -88,7 +131,6 @@
                 android:id="@+id/view_all_goals"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-<!--                android:text="View All" />-->
         </LinearLayout>
 
         <HorizontalScrollView
@@ -100,7 +142,51 @@
                 android:id="@+id/fragment_container_goals"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:orientation="horizontal" />
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_goals"
+                    android:layout_width="200dp"
+                    android:layout_height="290dp"
+                    android:layout_margin="8dp"
+                    app:cardElevation="4dp"
+                    app:cardCornerRadius="8dp"
+                    android:onClick="onCardClick"
+                    app:cardBackgroundColor="#FFDF6B">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="start"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:id="@+id/myImageView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/goals"
+                            tools:ignore="DuplicateIds" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Add New Goals"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="#725A03"
+                            android:layout_marginTop="8dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Near/future goals, notes and keep focus"
+                            android:textSize="12sp"
+                            android:layout_marginTop="4dp"
+                            android:textColor="#725A03" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
         </HorizontalScrollView>
 
         <LinearLayout
@@ -119,7 +205,6 @@
                 android:id="@+id/view_all_routine_task"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-<!--                android:text="View All" />-->
         </LinearLayout>
 
         <HorizontalScrollView
@@ -131,7 +216,51 @@
                 android:id="@+id/fragment_container_routine_task"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:orientation="horizontal" />
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_routine_tasks"
+                    android:layout_width="200dp"
+                    android:layout_height="290dp"
+                    android:layout_margin="8dp"
+                    app:cardElevation="4dp"
+                    app:cardCornerRadius="8dp"
+                    android:onClick="onCardClick"
+                    app:cardBackgroundColor="#FDFB71">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="start"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:id="@+id/myImageView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/routine_tasks"
+                            tools:ignore="DuplicateIds" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Add New Routine Tasks"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="#565510"
+                            android:layout_marginTop="8dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Checklist with sub-checklist"
+                            android:textSize="12sp"
+                            android:layout_marginTop="4dp"
+                            android:textColor="#565510" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
         </HorizontalScrollView>
 
         <LinearLayout
@@ -150,7 +279,6 @@
                 android:id="@+id/view_all_guidance"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-<!--                android:text="View All" />-->
         </LinearLayout>
 
         <HorizontalScrollView
@@ -162,7 +290,52 @@
                 android:id="@+id/fragment_container_guidance"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:orientation="horizontal" />
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_guidance"
+                    android:layout_width="200dp"
+                    android:layout_height="290dp"
+                    android:layout_margin="8dp"
+                    app:cardElevation="4dp"
+                    app:cardCornerRadius="8dp"
+                    android:onClick="onCardClick"
+                    app:cardBackgroundColor="#F8516F">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="start"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:id="@+id/myImageView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/guidance"
+                            tools:ignore="DuplicateIds" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Add New Guidance"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"
+                            android:layout_marginTop="8dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Create guidance for routine activities"
+                            android:textSize="12sp"
+                            android:layout_marginTop="4dp"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
         </HorizontalScrollView>
 
         <LinearLayout
@@ -181,7 +354,6 @@
                 android:id="@+id/view_all_buy_something"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-<!--                android:text="View All" />-->
         </LinearLayout>
 
         <HorizontalScrollView
@@ -193,7 +365,51 @@
                 android:id="@+id/fragment_container_buy_something"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:orientation="horizontal" />
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_buy_something"
+                    android:layout_width="200dp"
+                    android:layout_height="290dp"
+                    android:layout_margin="8dp"
+                    app:cardElevation="4dp"
+                    app:cardCornerRadius="8dp"
+                    android:onClick="onCardClick"
+                    app:cardBackgroundColor="#60D889">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="start"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:id="@+id/myImageView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/buy_something"
+                            tools:ignore="DuplicateIds" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Add New Buy Something"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"
+                            android:layout_marginTop="8dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Use checklist, so you won't miss anything"
+                            android:textSize="12sp"
+                            android:layout_marginTop="4dp"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
         </HorizontalScrollView>
 
         <FrameLayout
