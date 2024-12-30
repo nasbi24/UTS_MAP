@@ -4,11 +4,14 @@ import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Typeface
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.PopupMenu
 import android.widget.TextView
@@ -60,7 +63,33 @@ class HomeFragment : Fragment() {
             navigateToViewAll("buy_something")
         }
 
+        view.findViewById<View>(R.id.card_interesting_idea).setOnClickListener {
+            navigateToNotesActivity("Interesting Idea")
+        }
+
+        view.findViewById<View>(R.id.card_goals).setOnClickListener {
+            navigateToNotesActivity("Goals")
+        }
+
+        view.findViewById<View>(R.id.card_guidance).setOnClickListener {
+            navigateToNotesActivity("Guidance")
+        }
+
+        view.findViewById<View>(R.id.card_buy_something).setOnClickListener {
+            navigateToNotesActivity("Buy Something")
+        }
+
+        view.findViewById<View>(R.id.card_routine_tasks).setOnClickListener {
+            navigateToNotesActivity("Routine Tasks")
+        }
+
         return view
+    }
+
+    private fun navigateToNotesActivity(category: String) {
+        val intent = Intent(requireContext(), NotesActivity::class.java)
+        intent.putExtra("CATEGORY", category) // Send category data
+        startActivity(intent)
     }
 
     private fun navigateToViewAll(type: String) {
@@ -103,6 +132,23 @@ class HomeFragment : Fragment() {
             view.findViewById<LinearLayout>(categoryId).removeAllViews()
         }
 
+        // Add card views programmatically
+        view.findViewById<LinearLayout>(R.id.fragment_container_interesting_idea).addView(
+            createCardView("Interesting Idea", "Use free text area, feel free to write it all", R.drawable.interesting_ideaa, R.color.blue)
+        )
+        view.findViewById<LinearLayout>(R.id.fragment_container_goals).addView(
+            createCardView("Goals", "Near/future goals, notes and keep focus", R.drawable.goals, R.color.goals_color)
+        )
+        view.findViewById<LinearLayout>(R.id.fragment_container_routine_task).addView(
+            createCardView("Routine Tasks", "Checklist with sub-checklist", R.drawable.routine_tasks, R.color.routine_tasks_color)
+        )
+        view.findViewById<LinearLayout>(R.id.fragment_container_guidance).addView(
+            createCardView("Guidance", "Create guidance for routine activities", R.drawable.guidance, R.color.guidance_color)
+        )
+        view.findViewById<LinearLayout>(R.id.fragment_container_buy_something).addView(
+            createCardView("Buy Something", "Use checklist, so you won't miss anything", R.drawable.buy_something, R.color.buy_something_color)
+        )
+
         // Fetch and display pinned notes
         firestore.collection("pinned_notes")
             .whereEqualTo("user", user)
@@ -121,7 +167,7 @@ class HomeFragment : Fragment() {
                                 val cardView = createNoteCard(title, content, category)
                                 if (cardView != null) {
                                     val containerLayout = view.findViewById<LinearLayout>(R.id.fragment_container_pinned_notes)
-                                    containerLayout.addView(cardView)
+                                    containerLayout.addView(cardView, 0)
 
                                     cardView.setOnClickListener {
                                         val bundle = Bundle().apply {
@@ -160,7 +206,7 @@ class HomeFragment : Fragment() {
                     val cardView = createNoteCard(title, content, category)
                     if (cardView != null) {
                         val containerLayout = getCategoryContainer(view, category)
-                        containerLayout?.addView(cardView)
+                        containerLayout?.addView(cardView, 0)
 
                         cardView.setOnClickListener {
                             val bundle = Bundle().apply {
@@ -317,5 +363,78 @@ class HomeFragment : Fragment() {
 
 
         return cardView
+    }
+
+    private fun createCardView(title: String, description: String, imageResId: Int, backgroundColor: Int): CardView {
+        val cardView = CardView(requireContext()).apply {
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            ).apply {
+                width = 200.dpToPx()
+                height = 290.dpToPx()
+                setMargins(8.dpToPx(), 8.dpToPx(), 8.dpToPx(), 8.dpToPx())
+            }
+            cardElevation = 32f
+            radius = 32f
+            setCardBackgroundColor(ContextCompat.getColor(requireContext(), backgroundColor))
+            setOnClickListener {
+                navigateToNotesActivity(title)
+            }
+        }
+
+        val linearLayout = LinearLayout(requireContext()).apply {
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT
+            )
+            orientation = LinearLayout.VERTICAL
+            gravity = Gravity.START
+            setPadding(16.dpToPx(), 16.dpToPx(), 16.dpToPx(), 16.dpToPx())
+        }
+
+        val imageView = ImageView(requireContext()).apply {
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+            setImageResource(imageResId)
+        }
+
+        val titleTextView = TextView(requireContext()).apply {
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            ).apply {
+                topMargin = 8.dpToPx()
+            }
+            text = title
+            textSize = 16f
+            setTypeface(null, Typeface.BOLD)
+            setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+        }
+
+        val descriptionTextView = TextView(requireContext()).apply {
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            ).apply {
+                topMargin = 4.dpToPx()
+            }
+            text = description
+            textSize = 12f
+            setTextColor(ContextCompat.getColor(requireContext(), R.color.white))
+        }
+
+        linearLayout.addView(imageView)
+        linearLayout.addView(titleTextView)
+        linearLayout.addView(descriptionTextView)
+        cardView.addView(linearLayout)
+
+        return cardView
+    }
+
+    private fun Int.dpToPx(): Int {
+        return (this * resources.displayMetrics.density).toInt()
     }
 }

@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
 
     <application
         android:enableOnBackInvokedCallback="true"
@@ -49,6 +53,7 @@
             android:name=".MainActivity"
             android:exported="true">
         </activity>
+        <receiver android:name=".ReminderReceiver" />
     </application>
 
 </manifest>
