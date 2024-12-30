@@ -16,9 +16,9 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_calendar"
-        android:name="com.example.uts_map.FinishedFragment"
-        android:label="Finished"
-        tools:layout="@layout/fragment_finished" />
+        android:name="com.example.uts_map.CalendarFragment"
+        android:label="Calendar"
+        tools:layout="@layout/fragment_calendar" />
     <fragment
         android:id="@+id/navigation_addnew"
         android:name="com.example.uts_map.NewNotes"
@@ -28,7 +28,11 @@
         android:id="@+id/navigation_map"
         android:name="com.example.uts_map.SearchFragment"
         android:label="Search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_searchFragment_to_noteDetailFragment"
+            app:destination="@id/noteDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.uts_map.ProfileFragment"
@@ -53,15 +57,11 @@
     <fragment
         android:id="@+id/noteDetailFragment"
         android:name="com.example.uts_map.NoteDetailFragment"
-        android:label="Note Detail" />
+        android:label="Note Detail"
+        tools:layout="@layout/fragment_note_detail" />
     <action
         android:id="@+id/action_homeFragment_to_viewAllFragment"
         app:destination="@id/viewAllFragment" />
-    <fragment
-        android:id="@+id/viewAllFragment"
-        android:name="com.example.uts_map.ViewAllFragment"
-        android:label="ViewAllFragment" />
-<!--    janlup pake logic!!!-->
     <fragment
         android:id="@+id/viewAllFragment"
         android:name="com.example.uts_map.ViewAllFragment"
@@ -70,9 +70,4 @@
             android:id="@+id/action_viewAllFragment_to_noteDetailFragment"
             app:destination="@id/noteDetailFragment" />
     </fragment>
-
-    <fragment
-        android:id="@+id/noteDetailFragment"
-        android:name="com.example.uts_map.NoteDetailFragment"
-        android:label="Note Detail" />
 </navigation>

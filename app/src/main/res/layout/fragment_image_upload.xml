@@ -1,7 +1,8 @@
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/rounded_corners_blue">
 
     <LinearLayout
         android:id="@+id/content_layout"
@@ -19,6 +20,8 @@
             android:contentDescription="Image Preview" />
 
         <EditText
+            android:padding="10dp"
+            android:background="@drawable/input_field"
             android:id="@+id/et_image_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,6 +29,8 @@
             android:layout_marginBottom="16dp" />
 
         <Button
+            android:background="@drawable/button_background"
+            app:backgroundTint="@null"
             android:id="@+id/btn_upload_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,6 +38,8 @@
 
         <Button
             android:id="@+id/btn_cancel"
+            android:background="@drawable/button_background_invert"
+            app:backgroundTint="@null"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cancel"

@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.uts_map"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -34,6 +34,11 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        dataBinding = true
+    }
+
 }
 
 dependencies {
@@ -62,9 +67,18 @@ dependencies {
     implementation("androidx.camera:camera-lifecycle:1.0.2")
     implementation("androidx.camera:camera-view:1.0.0-alpha27")
 
+
     implementation("com.google.firebase:firebase-storage-ktx")
     implementation("com.google.firebase:firebase-firestore-ktx")
 
+    implementation("com.github.prolificinteractive:material-calendarview:2.0.1")
+
     implementation("com.github.bumptech.glide:glide:4.12.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
+
+    implementation("com.google.android.gms:play-services-auth:20.4.0")
+
+    implementation("com.jakewharton.threetenabp:threetenabp:1.3.1")
+
 }

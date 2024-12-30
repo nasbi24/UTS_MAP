@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="@color/purple">
+    android:background="@drawable/gradient">
 
     <TextView
         android:id="@+id/tvTitle"
@@ -23,5 +23,5 @@
         android:layout_height="wrap_content"
         android:text="Let's Get Started"
         android:backgroundTint="@android:color/white"
-        android:textColor="@color/purple" />
+        android:textColor="@color/blue" />
 </LinearLayout>

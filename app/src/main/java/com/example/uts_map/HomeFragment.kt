@@ -14,6 +14,7 @@ import android.widget.PopupMenu
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
@@ -265,6 +266,28 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun getCategoryColor(category: String?): Int {
+        return when (category) {
+            "Interesting Idea" -> ContextCompat.getColor(requireContext(), R.color.interesting_idea_color)
+            "Goals" -> ContextCompat.getColor(requireContext(), R.color.goals_color)
+            "Routine Tasks" -> ContextCompat.getColor(requireContext(), R.color.routine_tasks_color)
+            "Guidance" -> ContextCompat.getColor(requireContext(), R.color.guidance_color)
+            "Buy Something" -> ContextCompat.getColor(requireContext(), R.color.buy_something_color)
+            else -> ContextCompat.getColor(requireContext(), R.color.default_category_color)
+        }
+    }
+
+    private fun getCategoryFontColor(category: String?): Int {
+        return when (category) {
+            "Interesting Idea" -> ContextCompat.getColor(requireContext(), R.color.white)
+            "Goals" -> ContextCompat.getColor(requireContext(), R.color.black)
+            "Routine Tasks" -> ContextCompat.getColor(requireContext(), R.color.black)
+            "Guidance" -> ContextCompat.getColor(requireContext(), R.color.white)
+            "Buy Something" -> ContextCompat.getColor(requireContext(), R.color.white)
+            else -> ContextCompat.getColor(requireContext(), R.color.default_category_color)
+        }
+    }
+
     private fun createNoteCard(title: String?, content: String?, category: String?): CardView? {
         if (!isAdded) return null
 
@@ -287,6 +310,11 @@ class HomeFragment : Fragment() {
         titleTextView.text = title
         contentTextView.text = content
         categoryTextView.text = category
+
+        // Set background color based on category
+        categoryTextView.setBackgroundColor(getCategoryColor(category))
+        categoryTextView.setTextColor(getCategoryFontColor(category))
+
 
         return cardView
     }
