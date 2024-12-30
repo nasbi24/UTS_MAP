@@ -193,7 +193,7 @@ class HomeFragment : Fragment() {
         // Fetch and display other notes
         firestore.collection("notes")
             .whereEqualTo("user", user)
-            .orderBy("date", Query.Direction.DESCENDING)
+            .orderBy("date", Query.Direction.ASCENDING)
             .get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {
