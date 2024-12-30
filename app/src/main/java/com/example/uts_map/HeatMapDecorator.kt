@@ -19,7 +19,7 @@ class HeatMapDecorator(private val dates: Collection<CalendarDay>) : DayViewDeco
     override fun decorate(view: DayViewFacade) {
         val drawable = GradientDrawable()
         drawable.shape = GradientDrawable.OVAL
-        drawable.setColor(Color.rgb(200, 33, 255)) // Purple background
+        drawable.setColor(Color.rgb(100, 200, 255))
         view.setBackgroundDrawable(drawable)
         view.addSpan(ForegroundColorSpan(Color.WHITE)) // White text
         view.addSpan(StyleSpan(Typeface.BOLD)) // Bold text

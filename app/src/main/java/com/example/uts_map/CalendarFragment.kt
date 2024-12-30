@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,6 +23,7 @@ class CalendarFragment : Fragment() {
 
     private lateinit var calendarView: MaterialCalendarView
     private lateinit var recyclerViewAgenda: RecyclerView
+    private lateinit var selectedDateTextView: TextView
     private val agendas: MutableList<Note> = mutableListOf()
     private lateinit var firestore: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
@@ -34,6 +36,7 @@ class CalendarFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_calendar, container, false)
         calendarView = view.findViewById(R.id.calendarView)
         recyclerViewAgenda = view.findViewById(R.id.recyclerViewAgenda)
+        selectedDateTextView = view.findViewById(R.id.tv_selected_date)
 
         firestore = FirebaseFirestore.getInstance()
         auth = FirebaseAuth.getInstance()
@@ -64,6 +67,7 @@ class CalendarFragment : Fragment() {
             if (selected) {
                 val localDate = java.time.LocalDate.of(date.year, date.month, date.day)
                 val formattedDate = localDate.format(DateTimeFormatter.ISO_DATE)
+                selectedDateTextView.text = formattedDate
                 fetchNotesForDate(formattedDate)
             }
         })
