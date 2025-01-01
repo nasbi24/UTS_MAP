@@ -21,3 +21,6 @@ Aplikasi ini adalah aplikasi *TET CATET* yang dibangun menggunakan *Android Stud
 8. *Fitur Reminder*: Pengguna dapat menambahkan reminder pada notes, dan ada notifikasi yang muncul pada waktu yang ditentukan.
 9. *Fitur Kalender*: Pengguna dapat melihat notes melalui kalender yang sudah diberi indikator tanggal mana saja yang memiliki notes.
 10. *Fitur Google Login*: Pengguna dapat login dengan menggunakan akun Google.
+
+## D. *Demo Video*
+    [![Demo Video](https://drive.google.com/file/d/1KrrNs_qDx2qoYsqtKc9X5xn0GgtahfbA/view?usp=sharing)](https://drive.google.com/file/d/1KrrNs_qDx2qoYsqtKc9X5xn0GgtahfbA/view?usp=sharing)
