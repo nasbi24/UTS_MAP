@@ -23,4 +23,4 @@ Aplikasi ini adalah aplikasi *TET CATET* yang dibangun menggunakan *Android Stud
 10. *Fitur Google Login*: Pengguna dapat login dengan menggunakan akun Google.
 
 ## D. *Demo Video*
-    [![Demo Video](https://drive.google.com/file/d/1KrrNs_qDx2qoYsqtKc9X5xn0GgtahfbA/view?usp=sharing)](https://drive.google.com/file/d/1KrrNs_qDx2qoYsqtKc9X5xn0GgtahfbA/view?usp=sharing)
+    [![Demo Video](https://drive.google.com/file/d/1qX6i2XlHV-iSJgFMCMRLrolAXxxXfGz6/view?usp=sharing)](https://drive.google.com/file/d/1qX6i2XlHV-iSJgFMCMRLrolAXxxXfGz6/view?usp=sharing)
