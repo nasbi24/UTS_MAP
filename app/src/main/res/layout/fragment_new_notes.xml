@@ -10,7 +10,7 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="What Do You Want to Notes?"
+        android:text="What Do You Want to Note?"
         android:textSize="22sp"
         android:textColor="@color/black"
         android:textStyle="bold"
@@ -40,16 +40,23 @@
             app:cardElevation="4dp"
             app:cardCornerRadius="8dp"
             app:layout_columnWeight="1"
-            android:onClick="onCardClick">
+            android:onClick="onCardClick"
+            app:cardBackgroundColor="@color/blue">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
+                android:gravity="start"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="16dp"
+                >
 
-
+                <ImageView
+                    android:id="@+id/myImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/interesting_ideaa"
+                   />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -57,7 +64,7 @@
                     android:text="Interesting Idea"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:layout_marginTop="8dp" />
 
                 <TextView
@@ -66,7 +73,7 @@
                     android:text="Use free text area, feel free to write it all"
                     android:textSize="12sp"
                     android:layout_marginTop="4dp"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/white" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -79,14 +86,22 @@
             app:cardElevation="4dp"
             app:cardCornerRadius="8dp"
             app:layout_columnWeight="1"
-            android:onClick="onCardClick">
+            android:onClick="onCardClick"
+            app:cardBackgroundColor="#FFDF6B">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
+                android:gravity="start"
                 android:orientation="vertical"
                 android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/myImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/goals"
+                    tools:ignore="DuplicateIds" />
 
 
 
@@ -96,7 +111,7 @@
                     android:text="Goals"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
+                    android:textColor="#725A03"
                     android:layout_marginTop="8dp" />
 
                 <TextView
@@ -105,7 +120,7 @@
                     android:text="Near/future goals, notes and keep focus"
                     android:textSize="12sp"
                     android:layout_marginTop="4dp"
-                    android:textColor="@color/black" />
+                    android:textColor="#725A03" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -118,37 +133,44 @@
             android:layout_margin="8dp"
             app:cardElevation="4dp"
             app:cardCornerRadius="8dp"
-            app:layout_columnWeight="1">
+            app:layout_columnWeight="1"
+            app:cardBackgroundColor="#F8516F">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
+                android:gravity="start"
                 android:orientation="vertical"
                 android:padding="16dp">
 
+            <ImageView
+                android:id="@+id/myImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/guidance"
+                tools:ignore="DuplicateIds" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Guidance"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Create guidance for routine activities"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Guidance"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:layout_marginTop="8dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Create guidance for routine activities"
-                    android:textSize="12sp"
-                    android:layout_marginTop="4dp"
-                    android:textColor="@color/black" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <!-- Buy Something card -->
+    <!-- Buy Something card -->
         <androidx.cardview.widget.CardView
             android:id="@+id/card_buy_something"
             android:onClick="onCardClick"
@@ -157,16 +179,22 @@
             android:layout_margin="8dp"
             app:cardElevation="4dp"
             app:cardCornerRadius="8dp"
-            app:layout_columnWeight="1">
+            app:layout_columnWeight="1"
+            app:cardBackgroundColor="#60D889">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
+                android:gravity="start"
                 android:orientation="vertical"
                 android:padding="16dp">
 
-
+                <ImageView
+                    android:id="@+id/myImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/buy_something"
+                    tools:ignore="DuplicateIds" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -174,7 +202,7 @@
                     android:text="Buy Something"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:layout_marginTop="8dp" />
 
                 <TextView
@@ -183,7 +211,7 @@
                     android:text="Use checklist, so you won't miss anything"
                     android:textSize="12sp"
                     android:layout_marginTop="4dp"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/white" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -196,14 +224,22 @@
             android:layout_margin="8dp"
             app:cardElevation="4dp"
             app:cardCornerRadius="8dp"
-            app:layout_columnWeight="1">
+            app:layout_columnWeight="1"
+            app:cardBackgroundColor="#FDFB71">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
+                android:gravity="start"
                 android:orientation="vertical"
                 android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/myImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/routine_tasks"
+                    tools:ignore="DuplicateIds" />
 
 
                 <TextView
@@ -212,7 +248,7 @@
                     android:text="Routine Tasks"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    android:textColor="@color/black"
+                    android:textColor="#565510"
                     android:layout_marginTop="8dp" />
 
                 <TextView
@@ -221,7 +257,7 @@
                     android:text="Checklist with sub-checklist"
                     android:textSize="12sp"
                     android:layout_marginTop="4dp"
-                    android:textColor="@color/black" />
+                    android:textColor="#565510" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

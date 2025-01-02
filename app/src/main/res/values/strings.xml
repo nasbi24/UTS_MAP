@@ -2,10 +2,13 @@
     <!-- res/values/strings.xml -->
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="app_name">uts_map</string>
+    <string name="app_name">TetCatet</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="back_button">Back</string>
     <string name="search_hint">Search...</string>
     <string name="recent_searches">RECENT SEARCHES</string>
+    <string name="email_warn">Changing email address information means you
+need to re-login to the apps.</string>
+
 </resources>

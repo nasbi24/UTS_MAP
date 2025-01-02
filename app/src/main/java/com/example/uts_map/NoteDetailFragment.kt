@@ -48,7 +48,9 @@ class NoteDetailFragment : Fragment() {
         view.findViewById<TextView>(R.id.tv_note_content).text = content
 
         val imagesLayout = view.findViewById<LinearLayout>(R.id.ll_images)
+        val remindersLayout = view.findViewById<LinearLayout>(R.id.ll_reminders)
         loadNoteImages(noteId, imagesLayout)
+        loadNoteReminders(noteId, remindersLayout)
 
         val pinButton = view.findViewById<ImageButton>(R.id.btn_pin)
         val deleteButton = view.findViewById<ImageButton>(R.id.btn_delete)
@@ -230,6 +232,39 @@ class NoteDetailFragment : Fragment() {
             .addOnFailureListener { e ->
                 Log.e("NoteDetailFragment", "Failed to load images", e)
                 Toast.makeText(requireContext(), "Failed to load images", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun loadNoteReminders(noteId: String?, remindersLayout: LinearLayout?) {
+        val db = FirebaseFirestore.getInstance()
+        db.collection("reminders").whereEqualTo("note_id", noteId)
+            .get()
+            .addOnSuccessListener { querySnapshot ->
+                if (querySnapshot.isEmpty) {
+                    Log.d("NoteDetailFragment", "No reminders found for noteId: $noteId")
+                } else {
+                    for (document in querySnapshot.documents) {
+                        val date = document.getString("date") ?: "No date"
+                        val time = document.getString("time") ?: "No time"
+                        val title = document.getString("title") ?: "No title"
+                        val description = document.getString("description") ?: "No description"
+
+                        val reminderView = TextView(requireContext()).apply {
+                            text = "$date $time - $title: $description"
+                            layoutParams = LinearLayout.LayoutParams(
+                                LinearLayout.LayoutParams.MATCH_PARENT,
+                                LinearLayout.LayoutParams.WRAP_CONTENT
+                            ).apply {
+                                setMargins(0, 4, 0, 8)
+                            }
+                        }
+                        remindersLayout?.addView(reminderView)
+                    }
+                }
+            }
+            .addOnFailureListener { e ->
+                Log.e("NoteDetailFragment", "Failed to load reminders", e)
+                Toast.makeText(requireContext(), "Failed to load reminders", Toast.LENGTH_SHORT).show()
             }
     }
 }

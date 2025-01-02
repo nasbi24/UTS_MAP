@@ -5,7 +5,9 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/BackgroundColor"
     tools:context=".MainActivity">
+
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -15,7 +17,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/purple"
+            android:background="@drawable/gradient_nav"
             app:titleTextColor="@color/white"
             app:navigationIconTint="@color/white"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
@@ -37,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="@color/nav"
+            android:background="@drawable/gradient_nav"
             app:itemIconTint="@color/nav_item_color"
             app:itemTextColor="@color/nav_item_color"
             app:menu="@menu/bottom_nav_menu" />
@@ -51,7 +53,7 @@
             android:layout_marginEnd="22dp"
             android:layout_marginBottom="90dp"
             android:src="@drawable/icon_addnew"
-            app:backgroundTint="@color/purple"
+            app:backgroundTint="#5CA8D7"
             app:tint="@android:color/white"
             app:shapeAppearanceOverlay="@style/CustomFabShape" />
 

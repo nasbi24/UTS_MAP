@@ -3,7 +3,7 @@
     <!-- Background Circle -->
     <item>
         <shape android:shape="oval">
-            <solid android:color="@color/purple" />
+            <solid android:color="@color/blue" />
 
             <size
                 android:width="24dp"
